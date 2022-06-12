@@ -2,6 +2,7 @@ package com.makhalibagas.myapplication.presentation.page.auth
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.core.view.isVisible
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.makhalibagas.myapplication.data.source.remote.request.RegisterReq
@@ -44,9 +45,16 @@ class RegisterActivity : AppCompatActivity() {
         collectLifecycleFlow(viewModel.register) { state ->
             when (state) {
                 is UiStateWrapper.Loading -> {
-
+                    binding.apply {
+                        loading.isVisible = state.isLoading
+                        btnSave.isVisible = false
+                    }
                 }
                 is UiStateWrapper.Success -> {
+                    binding.apply {
+                        loading.isVisible = false
+                        btnSave.isVisible = true
+                    }
                     startActivity(Intent(this, LoginActivity::class.java))
                     finishAffinity()
                 }

@@ -6,11 +6,17 @@ import androidx.appcompat.app.AppCompatActivity
 import com.makhalibagas.myapplication.data.source.remote.response.Users
 import com.makhalibagas.myapplication.databinding.ActivityMainBinding
 import com.makhalibagas.myapplication.presentation.page.auth.LoginActivity
+import com.makhalibagas.myapplication.utils.Shareds
 import com.makhalibagas.myapplication.utils.viewBinding
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private val binding by viewBinding(ActivityMainBinding::inflate)
+    @Inject
+    lateinit var shareds: Shareds
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,7 +25,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initListener() {
-        val users = intent.getParcelableExtra<Users>("users")!!
+        val users = shareds.users!!
         binding.apply {
             btGreen.setOnClickListener {
                 if (users.tipeUser.equals("2")) {
@@ -44,6 +50,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             btLogout.setOnClickListener {
+                shareds.setUsers(Shareds.Key.users, null)
                 startActivity(Intent(this@MainActivity, LoginActivity::class.java))
                 finishAffinity()
             }

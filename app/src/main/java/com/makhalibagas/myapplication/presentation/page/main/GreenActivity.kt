@@ -1,13 +1,18 @@
 package com.makhalibagas.myapplication.presentation.page.main
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
+import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import androidx.core.widget.doOnTextChanged
+import com.makhalibagas.myapplication.R
 import com.makhalibagas.myapplication.data.source.remote.request.GreenReq
 import com.makhalibagas.myapplication.databinding.ActivityGreenBinding
 import com.makhalibagas.myapplication.presentation.state.UiStateWrapper
+import com.makhalibagas.myapplication.utils.Datas
 import com.makhalibagas.myapplication.utils.collectLifecycleFlow
 import com.makhalibagas.myapplication.utils.dateTime
 import com.makhalibagas.myapplication.utils.viewBinding
@@ -27,31 +32,74 @@ class GreenActivity : AppCompatActivity() {
         initObserver()
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun initListener() {
         binding.apply {
-            etLokasi.doOnTextChanged { text, _, _, _ ->
-                if (text != null && text.contains(',') || text?.length ?: 0 < 4) return@doOnTextChanged
-                etKondisi.isEnabled = true
+
+            etShift.apply {
+                setAdapter(
+                    ArrayAdapter(
+                        this@GreenActivity,
+                        R.layout.item_dropdown,
+                        Datas.shift
+                    )
+                )
+                setOnTouchListener { _, _ ->
+                    showDropDown()
+                    return@setOnTouchListener false
+                }
             }
-            etKondisi.doOnTextChanged { text, _, _, _ ->
-                if (text != null && text.contains(',') || text?.length ?: 0 < 4) return@doOnTextChanged
-                etSaran.isEnabled = true
+            etSite.apply {
+                setAdapter(
+                    ArrayAdapter(
+                        this@GreenActivity,
+                        R.layout.item_dropdown,
+                        Datas.site
+                    )
+                )
+                setOnTouchListener { _, _ ->
+                    showDropDown()
+                    return@setOnTouchListener false
+                }
             }
-            etSaran.doOnTextChanged { text, _, _, _ ->
-                if (text != null && text.contains(',') || text?.length ?: 0 < 4) return@doOnTextChanged
-                etDibicarakan.isEnabled = true
+            etDp.apply {
+                setAdapter(
+                    ArrayAdapter(
+                        this@GreenActivity,
+                        R.layout.item_dropdown,
+                        Datas.departemen
+                    )
+                )
+                setOnTouchListener { _, _ ->
+                    showDropDown()
+                    return@setOnTouchListener false
+                }
             }
-            etDibicarakan.doOnTextChanged { text, _, _, _ ->
-                if (text != null && text.contains(',') || text?.length ?: 0 < 4) return@doOnTextChanged
-                etStatus.isEnabled = true
+            etStatus.apply {
+                setAdapter(
+                    ArrayAdapter(
+                        this@GreenActivity,
+                        R.layout.item_dropdown,
+                        Datas.status
+                    )
+                )
+                setOnTouchListener { _, _ ->
+                    showDropDown()
+                    return@setOnTouchListener false
+                }
             }
-            etStatus.doOnTextChanged { text, _, _, _ ->
-                if (text != null && text.contains(',') || text?.length ?: 0 < 4) return@doOnTextChanged
-                etCategory.isEnabled = true
-            }
-            etCategory.doOnTextChanged { text, _, _, _ ->
-                if (text != null && text.contains(',') || text?.length ?: 0 < 4) return@doOnTextChanged
-                btnSave.isEnabled = true
+            etCategory.apply {
+                setAdapter(
+                    ArrayAdapter(
+                        this@GreenActivity,
+                        R.layout.item_dropdown,
+                        Datas.category
+                    )
+                )
+                setOnTouchListener { _, _ ->
+                    showDropDown()
+                    return@setOnTouchListener false
+                }
             }
 
             btnSave.setOnClickListener {
@@ -83,6 +131,8 @@ class GreenActivity : AppCompatActivity() {
                     binding.apply {
                         loading.isVisible = false
                         btnSave.isVisible = true
+                        Toast.makeText(this@GreenActivity, "Berhasil Tambah Data", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this@GreenActivity, MainActivity::class.java))
                     }
                 }
                 is UiStateWrapper.Error -> {}

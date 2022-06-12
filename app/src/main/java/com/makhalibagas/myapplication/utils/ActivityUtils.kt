@@ -47,5 +47,5 @@ fun changeDateFormat(fullTime: String, format: String): String {
     val locale = Locale.getDefault()
     val parser = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", locale)
     val formatter = SimpleDateFormat(format, locale)
-    return formatter.format(parser.parse(fullTime) ?: formatter.format(Date()))
+    return parser.parse(fullTime)?.let { formatter.format(it) }.toString()
 }

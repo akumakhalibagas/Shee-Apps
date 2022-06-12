@@ -19,21 +19,6 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
-            android:name=".ShowJsaActivity"
-            android:exported="false" />
-        <activity
-            android:name=".JsaActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ShowIbprActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ShowGreenActivity"
-            android:exported="false" />
-        <activity
-            android:name=".RegisterActivity"
-            android:exported="false" />
-        <activity
             android:name=".presentation.page.main.GreenActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
@@ -53,6 +38,17 @@
             android:name=".presentation.page.auth.LoginActivity"
             android:exported="true"
             android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".presentation.page.auth.RegisterActivity" />
+        <activity android:name=".presentation.page.main.ShowGreenActivity"
+            android:screenOrientation="landscape" />
+        <activity android:name=".presentation.page.main.ShowIbprActivity"
+            android:screenOrientation="landscape" />
+        <activity android:name=".presentation.page.main.ShowJsaActivity"
+            android:screenOrientation="landscape" />
+        <activity android:name=".presentation.page.main.JsaActivity" />
+        <activity android:name=".presentation.page.main.SplashActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
