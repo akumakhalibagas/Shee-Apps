@@ -53,7 +53,6 @@ class JsaActivity : AppCompatActivity() {
     }
 
     private fun initObserver() {
-        viewModel.getJsa()
         collectLifecycleFlow(viewModel.addJsa) { state ->
             when (state) {
                 is UiStateWrapper.Loading -> {

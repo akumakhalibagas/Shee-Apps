@@ -57,7 +57,7 @@ class ShowJsaActivity : AppCompatActivity() {
     }
 
     private fun initObserver() {
-        viewModel.getIbpr()
+        viewModel.getJsa()
 
         collectLifecycleFlow(viewModel.jsa) { state ->
             when (state) {
