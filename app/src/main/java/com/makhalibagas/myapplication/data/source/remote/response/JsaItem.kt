@@ -1,0 +1,63 @@
+package com.makhalibagas.myapplication.data.source.remote.response
+
+import com.google.gson.annotations.SerializedName
+
+data class JsaItem(
+
+	@field:SerializedName("anggota1")
+	val anggota1: String? = null,
+
+	@field:SerializedName("anggota2")
+	val anggota2: String? = null,
+
+	@field:SerializedName("bahaya")
+	val bahaya: String? = null,
+
+	@field:SerializedName("pengendalian")
+	val pengendalian: String? = null,
+
+	@field:SerializedName("anggota5")
+	val anggota5: Any? = null,
+
+	@field:SerializedName("anggota6")
+	val anggota6: Any? = null,
+
+	@field:SerializedName("anggota3")
+	val anggota3: String? = null,
+
+	@field:SerializedName("anggota4")
+	val anggota4: String? = null,
+
+	@field:SerializedName("perusahaan")
+	val perusahaan: String? = null,
+
+	@field:SerializedName("anggota7")
+	val anggota7: Any? = null,
+
+	@field:SerializedName("anggota8")
+	val anggota8: Any? = null,
+
+	@field:SerializedName("pekerjaan")
+	val pekerjaan: String? = null,
+
+	@field:SerializedName("tahap")
+	val tahap: String? = null,
+
+	@field:SerializedName("id")
+	val id: String? = null,
+
+	@field:SerializedName("tanggal")
+	val tanggal: String? = null,
+
+	@field:SerializedName("hse")
+	val hse: String? = null,
+
+	@field:SerializedName("tanggung_jawab")
+	val tanggungJawab: String? = null,
+
+	@field:SerializedName("pekerja")
+	val pekerja: String? = null,
+
+	@field:SerializedName("supervisor")
+	val supervisor: String? = null
+)

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/drawable/bg_dropdown.xml" value="0.177" />
+        <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/drawable/bg_shape.xml" value="0.1865" />
+        <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/layout-land/layout_pdf_green.xml" value="0.2526041666666667" />
+        <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/layout-land/layout_pdf_ibpr.xml" value="0.2526041666666667" />
+        <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/layout/activity_admin.xml" value="0.25" />
+        <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/layout/activity_green.xml" value="0.25" />
+        <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/layout/activity_ibpr.xml" value="0.22" />
+        <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/layout/activity_pdf_green.xml" value="0.25" />
+        <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/layout/activity_register.xml" value="0.1811965811965812" />
+        <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/layout/item_green.xml" value="0.5" />
+        <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/layout/item_ibpr.xml" value="0.33" />
+        <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/layout/layout.xml" value="0.25" />
+        <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/layout/layout_pdf_green.xml" value="0.25" />
+        <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/layout/layout_pdf_ibpr.xml" value="0.22" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

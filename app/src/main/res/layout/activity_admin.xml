@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Halo Admin"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_pdf"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:layout_marginEnd="6dp"
+            android:layout_weight="1"
+            android:background="@color/purple_500"
+            android:enabled="false"
+            android:text="Download Pdf Green"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_excel"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:layout_marginStart="6dp"
+            android:layout_weight="1"
+            android:background="@color/purple_500"
+            android:enabled="false"
+            android:text="Download Excel Green"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_pdf_ibpr"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:layout_marginEnd="6dp"
+            android:layout_weight="1"
+            android:background="@color/purple_500"
+            android:enabled="false"
+            android:text="Download Pdf IBPR"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_excel_ibpr"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:layout_marginStart="6dp"
+            android:layout_weight="1"
+            android:background="@color/purple_500"
+            android:enabled="false"
+            android:text="Download Excel IBPR"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.appcompat.widget.LinearLayoutCompat>
