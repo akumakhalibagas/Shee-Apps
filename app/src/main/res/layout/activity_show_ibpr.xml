@@ -22,6 +22,7 @@
                 android:layout_gravity="end"
                 android:layout_marginEnd="6dp"
                 android:background="@drawable/bg_shape"
+                android:enabled="false"
                 android:text="Print PDF"
                 android:textAllCaps="false" />
 
@@ -32,6 +33,7 @@
                 android:layout_gravity="end"
                 android:layout_marginStart="6dp"
                 android:background="@drawable/bg_shape"
+                android:enabled="false"
                 android:text="Print Excel"
                 android:textAllCaps="false" />
 

@@ -25,7 +25,7 @@ class SplashActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
         activityScope.launch {
-            delay(3000)
+            delay(2000)
             if (shareds.users != null) {
                 val intent = Intent(this@SplashActivity, MainActivity::class.java)
                 startActivity(intent)

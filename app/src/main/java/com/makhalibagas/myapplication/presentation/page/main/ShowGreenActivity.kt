@@ -153,10 +153,8 @@ class ShowGreenActivity : AppCompatActivity() {
             wb.write(fileOutputStream)
             Toast.makeText(this, "created at $filePath", Toast.LENGTH_SHORT).show()
 
-            if (fileOutputStream != null) {
-                fileOutputStream.flush()
-                fileOutputStream.close()
-            }
+            fileOutputStream.flush()
+            fileOutputStream.close()
         } catch (e: Exception) {
             e.printStackTrace()
         }
