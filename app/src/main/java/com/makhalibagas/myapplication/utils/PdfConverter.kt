@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.graphics.Matrix
 import android.graphics.pdf.PdfDocument
 import android.os.Build
 import android.util.DisplayMetrics
@@ -58,10 +59,22 @@ class PDFConverter {
             view.measuredWidth,
             view.measuredHeight, Bitmap.Config.ARGB_8888
         )
-
+        val rotateBitmap = bitmap.rotate(90)
         val canvas = Canvas(bitmap)
         view.draw(canvas)
         return Bitmap.createScaledBitmap(bitmap, view.width, view.height, true)
+    }
+
+    infix fun Bitmap.rotate(degrees: Number): Bitmap? {
+        return Bitmap.createBitmap(
+            this,
+            0,
+            0,
+            width,
+            height,
+            Matrix().apply { postRotate(degrees.toFloat()) },
+            true
+        )
     }
 
     private fun convertBitmapToPdf(bitmap: Bitmap, context: Context) {
@@ -88,7 +101,7 @@ class PDFConverter {
         val adapter = ItemGreenAdapter()
         adapter.setData(list)
         val bitmap = createBitmapFromView(context, view, adapter, activity)
-        convertBitmapToPdf(bitmap, activity)
+        convertBitmapToPdf(bitmap,context)
     }
 
 

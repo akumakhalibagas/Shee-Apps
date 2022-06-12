@@ -10,6 +10,6 @@ class ShowJsaActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        supportActionBar?.title = "Jsa"
+        supportActionBar?.hide()
     }
 }

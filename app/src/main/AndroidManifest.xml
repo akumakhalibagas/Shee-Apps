@@ -41,7 +41,7 @@
         </activity>
         <activity android:name=".presentation.page.auth.RegisterActivity" />
         <activity android:name=".presentation.page.main.ShowGreenActivity"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"/>
         <activity android:name=".presentation.page.main.ShowIbprActivity"
             android:screenOrientation="landscape" />
         <activity android:name=".presentation.page.main.ShowJsaActivity"

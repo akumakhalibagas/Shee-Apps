@@ -31,7 +31,7 @@ class ShowIbprActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        supportActionBar?.title = "Ibpr"
+        supportActionBar?.hide()
         initView()
         initListener()
         initObserver()
