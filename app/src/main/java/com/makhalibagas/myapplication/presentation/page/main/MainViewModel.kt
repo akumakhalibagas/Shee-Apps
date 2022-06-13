@@ -160,14 +160,14 @@ class MainViewModel @Inject constructor(val repository: IMainRepository) : ViewM
         collectLifecycleFlow(repository.addIbpr(ibpr)) { resource ->
             when (resource) {
                 is Resource.Loading -> {
-                    _addGreen.emit(UiStateWrapper.Loading(true))
+                    _addIbpr.emit(UiStateWrapper.Loading(true))
                 }
                 is Resource.Success -> {
-                    _addGreen.emit(UiStateWrapper.Loading(false))
-                    _addGreen.emit(UiStateWrapper.Success(resource.data))
+                    _addIbpr.emit(UiStateWrapper.Loading(false))
+                    _addIbpr.emit(UiStateWrapper.Success(resource.data))
                 }
                 is Resource.Error -> {
-                    _addGreen.emit(UiStateWrapper.Loading(false))
+                    _addIbpr.emit(UiStateWrapper.Loading(false))
                 }
             }
         }

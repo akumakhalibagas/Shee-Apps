@@ -1,13 +1,18 @@
 package com.makhalibagas.myapplication.presentation.page.auth
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.makhalibagas.myapplication.R
 import com.makhalibagas.myapplication.data.source.remote.request.RegisterReq
 import com.makhalibagas.myapplication.databinding.ActivityRegisterBinding
 import com.makhalibagas.myapplication.presentation.state.UiStateWrapper
+import com.makhalibagas.myapplication.utils.Datas
 import com.makhalibagas.myapplication.utils.collectLifecycleFlow
 import com.makhalibagas.myapplication.utils.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,16 +31,40 @@ class RegisterActivity : AppCompatActivity() {
         initObserver()
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun initListener() {
         binding.apply {
-            btnSave.setOnClickListener {
-                viewModel.register(
-                    RegisterReq(
-                        etUsername.text.toString(),
-                        etPassword.text.toString(),
-                        "2"
+            etType.apply {
+                setAdapter(
+                    ArrayAdapter(
+                        this@RegisterActivity,
+                        R.layout.item_dropdown,
+                        Datas.type
                     )
                 )
+                setOnTouchListener { _, _ ->
+                    showDropDown()
+                    return@setOnTouchListener false
+                }
+            }
+
+            btnSave.setOnClickListener {
+                if (etUsername.text.toString().isEmpty() && etPassword.text.toString().isEmpty() && etType.text.toString().isEmpty() ){
+                    Toast.makeText(this@RegisterActivity, "Wajib isi semua", Toast.LENGTH_SHORT).show()
+                }else{
+                    val type = when {
+                        etType.text.toString()=="Head" -> "1"
+                        etType.text.toString()=="Officer/Admin" -> "2"
+                        else -> "0"
+                    }
+                    viewModel.register(
+                        RegisterReq(
+                            etUsername.text.toString(),
+                            etPassword.text.toString(),
+                            type
+                        )
+                    )
+                }
             }
         }
     }

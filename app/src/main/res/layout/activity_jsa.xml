@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="perusahaan" />
+            android:text="Perusahaan" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_perusahaan"
@@ -34,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="pekerja" />
+            android:text="Pekerja" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_pekerja"
@@ -50,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="pekerjaan" />
+            android:text="Pekerjaan" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_pekerjaan"
@@ -68,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="supervisor" />
+            android:text="Supervisor" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_supervisor"
@@ -86,7 +86,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="hse" />
+            android:text="HSE Departement" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_hse"
@@ -104,7 +104,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="tahap" />
+            android:text="Tahap Pekerjaan" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_tahap"
@@ -120,7 +120,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="bahaya" />
+            android:text="Potensi Bahaya" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_bahaya"
@@ -136,7 +136,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="pengendalian" />
+            android:text="Upaya Pengendalian" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_pengendalian"
@@ -152,26 +152,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="tanggung_jawab" />
+            android:text="Tanggung Jawab" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_tanggung_jawab"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_shape"
-            android:imeOptions="actionNext"
-            android:paddingStart="6dp"
-            tools:ignore="RtlSymmetry" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="anggota" />
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/et_anggota"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginTop="10dp"

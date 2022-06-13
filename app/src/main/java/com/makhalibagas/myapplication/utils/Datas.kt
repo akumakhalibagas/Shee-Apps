@@ -6,4 +6,5 @@ object Datas {
     val status = listOf("Open", "Close")
     val category = listOf("KTA", "TTA")
     val departemen = listOf("SHE", "Produksi", "SCM", "Engineering", "Plant", "HCGC")
+    val type = listOf("Head", "Officer/Admin")
 }

@@ -2,6 +2,7 @@ package com.makhalibagas.myapplication.presentation.page.auth
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -38,7 +39,16 @@ class LoginActivity : AppCompatActivity() {
                 startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
             }
             btnSave.setOnClickListener {
-                viewModel.login(LoginReq(etUsername.text.toString(), etPassword.text.toString()))
+                if (etUsername.text.toString().isEmpty() && etPassword.text.toString().isEmpty()){
+                    Toast.makeText(this@LoginActivity, "Wajib isi semua", Toast.LENGTH_SHORT).show()
+                }else {
+                    viewModel.login(
+                        LoginReq(
+                            etUsername.text.toString(),
+                            etPassword.text.toString()
+                        )
+                    )
+                }
             }
         }
     }

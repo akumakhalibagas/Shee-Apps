@@ -45,7 +45,6 @@ class JsaActivity : AppCompatActivity() {
                         etBahaya.text.toString(),
                         etPengendalian.text.toString(),
                         etTanggungJawab.text.toString(),
-                        etAnggota.text.toString(),
                     )
                 )
             }

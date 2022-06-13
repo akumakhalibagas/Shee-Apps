@@ -32,18 +32,5 @@ data class JsaReq(
     val pengendalian: String? = null,
 
     @field:SerializedName("tanggung_jawab")
-    val tanggungJawab: String? = null,
-
-    @field:SerializedName("anggota1")
-    val anggota1: String? = null,
-
-    @field:SerializedName("anggota2")
-    val anggota2: String? = null,
-
-
-    @field:SerializedName("anggota3")
-    val anggota3: String? = null,
-
-    @field:SerializedName("anggota4")
-    val anggota4: String? = null
+    val tanggungJawab: String? = null
 )

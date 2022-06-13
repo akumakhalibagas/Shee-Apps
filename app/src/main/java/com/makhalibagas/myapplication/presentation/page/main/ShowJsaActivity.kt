@@ -104,8 +104,6 @@ class ShowJsaActivity : AppCompatActivity() {
         cell.setCellValue("Pengendalian")
         cell = row.createCell(10)
         cell.setCellValue("Tanggung Jawab")
-        cell = row.createCell(11)
-        cell.setCellValue("Anggota1")
 
         //column width
         sheet.setColumnWidth(0, 20 * 200)
@@ -119,7 +117,6 @@ class ShowJsaActivity : AppCompatActivity() {
         sheet.setColumnWidth(8, 30 * 200)
         sheet.setColumnWidth(9, 30 * 200)
         sheet.setColumnWidth(10, 30 * 200)
-        sheet.setColumnWidth(11, 30 * 200)
 
         for (i in list.indices) {
 
@@ -146,8 +143,6 @@ class ShowJsaActivity : AppCompatActivity() {
             cell.setCellValue(list[i].pengendalian)
             cell = row1.createCell(10)
             cell.setCellValue(list[i].tanggungJawab)
-            cell = row1.createCell(11)
-            cell.setCellValue(list[i].anggota1)
 
             sheet.setColumnWidth(0, 20 * 200)
             sheet.setColumnWidth(1, 30 * 200)
@@ -160,7 +155,6 @@ class ShowJsaActivity : AppCompatActivity() {
             sheet.setColumnWidth(8, 30 * 200)
             sheet.setColumnWidth(9, 30 * 200)
             sheet.setColumnWidth(10, 30 * 200)
-            sheet.setColumnWidth(11, 30 * 200)
         }
 
         val filePath = File(externalMediaDirs[0], "SheeDemoJsa${System.currentTimeMillis()}.xls")

@@ -1,12 +1,18 @@
 package com.makhalibagas.myapplication.utils
 
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
+import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.activity.ComponentActivity
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.viewbinding.ViewBinding
+import com.makhalibagas.myapplication.R
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.launch
@@ -48,4 +54,55 @@ fun changeDateFormat(fullTime: String, format: String): String {
     val parser = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", locale)
     val formatter = SimpleDateFormat(format, locale)
     return parser.parse(fullTime)?.let { formatter.format(it) }.toString()
+}
+
+fun View.showDatePicker(callback: (Date) -> Unit) {
+    val calendar = Calendar.getInstance()
+    val datePickerDialog = DatePickerDialog(
+        context,
+        { _, year, monthOfYear, dayOfMonth ->
+            calendar.set(year, monthOfYear, dayOfMonth, 0, 0, 0)
+            callback(calendar.time)
+        },
+        calendar.get(Calendar.YEAR),
+        calendar.get(Calendar.MONTH),
+        calendar.get(Calendar.DAY_OF_MONTH)
+    )
+
+    datePickerDialog.setOnShowListener {
+        hideKeyboard()
+    }
+
+    datePickerDialog.show()
+}
+
+fun View.hideKeyboard() {
+    val inputMethodManager = this.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    inputMethodManager.hideSoftInputFromWindow(this.windowToken, 0)
+}
+
+class TimePickerHelper(
+    context: Context,
+    is24HourView: Boolean,
+    isSpinnerType: Boolean = false
+) {
+    private var dialog: TimePickerDialog
+    private var callback: Callback? = null
+    private val listener = TimePickerDialog.OnTimeSetListener { timePicker, hourOfDay, minute ->
+        callback?.onTimeSelected(hourOfDay, minute)
+    }
+    init {
+        val style = if (isSpinnerType) R.style.SpinnerTimePickerDialog else 0
+        val cal = Calendar.getInstance()
+        dialog = TimePickerDialog(context, style, listener,
+            cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), is24HourView)
+    }
+    fun showDialog(hourOfDay: Int, minute: Int, callback: Callback?) {
+        this.callback = callback
+        dialog.updateTime(hourOfDay, minute)
+        dialog.show()
+    }
+    interface Callback {
+        fun onTimeSelected(hourOfDay: Int, minute: Int)
+    }
 }
