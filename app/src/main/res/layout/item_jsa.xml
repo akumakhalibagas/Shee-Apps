@@ -50,13 +50,35 @@
                 android:textSize="12sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_tahap"
+                android:id="@+id/tv_bahaya"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Tahap Pekerjaan"
+                android:text="Bahaya Banget"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_supervisor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="6dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Bagas Makhali"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_perusahaan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="6dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Perusahaan"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 

@@ -19,11 +19,9 @@ data class JsaReq(
     @field:SerializedName("supervisor")
     val supervisor: String? = null,
 
-    @field:SerializedName("hse")
-    val hse: String? = null,
 
-    @field:SerializedName("tahap")
-    val tahap: String? = null,
+    @field:SerializedName("department")
+    val department: String? = null,
 
     @field:SerializedName("bahaya")
     val bahaya: String? = null,

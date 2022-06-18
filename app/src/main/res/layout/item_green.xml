@@ -72,6 +72,33 @@
                 android:textSize="12sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_shift"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="6dp"
+                android:gravity="center"
+                android:text="Malam"
+                android:textSize="12sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_site"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="6dp"
+                android:gravity="center"
+                android:text="PMSS"
+                android:textSize="12sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_dp"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="6dp"
+                android:gravity="center"
+                android:text="PT Mantap Jaya"
+                android:textSize="12sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_kondisi"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"

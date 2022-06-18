@@ -25,12 +25,18 @@ data class IbprReq(
 	@field:SerializedName("status")
 	val status: String? = null,
 
-//	@field:SerializedName("shift")
-//	val shift: String? = null,
-//
-//	@field:SerializedName("lokasi")
-//	val site: String? = null,
-//
-//	@field:SerializedName("site")
-//	val department: String? = null,
+	@field:SerializedName("shift")
+	val shift: String? = null,
+
+	@field:SerializedName("site")
+	val site: String? = null,
+
+	@field:SerializedName("department")
+	val department: String? = null,
+
+	@field:SerializedName("pelapor")
+	val pelapor: String? = null,
+
+	@field:SerializedName("bahaya")
+	val bahaya: String? = null
 )

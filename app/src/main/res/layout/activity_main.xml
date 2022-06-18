@@ -1,57 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/bt_green"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/purple_500"
-        android:text="Green Card"
-        android:textAllCaps="false"
-        android:textColor="@color/white" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/bt_ibpr"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/purple_500"
-        android:text="IBPR"
-        android:textAllCaps="false"
-        android:textColor="@color/white" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/bt_jsa"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/purple_500"
-        android:text="JSA"
-        android:textAllCaps="false"
-        android:textColor="@color/white" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/bt_monitoring"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/purple_500"
-        android:text="Monitoring"
-        android:textAllCaps="false"
-        android:textColor="@color/white" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/bt_logout"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="60dp"
         android:background="@color/white"
-        android:text="Log out"
-        android:textAllCaps="false"
-        android:textColor="@color/black" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Safety Healty Environment"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#DDFFFC"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/l_admin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/add_gc"
+                android:layout_width="0dp"
+                android:layout_height="75dp"
+                android:layout_weight="1"
+                android:src="@drawable/gcadmin" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/add_ibpr"
+                android:layout_width="0dp"
+                android:layout_height="75dp"
+                android:layout_marginHorizontal="12dp"
+                android:layout_weight="1"
+                android:src="@drawable/ibpradmin" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/add_jsa"
+                android:layout_width="0dp"
+                android:layout_height="75dp"
+                android:layout_weight="1"
+                android:src="@drawable/jsaadmin" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/l_head"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/show_gc"
+                android:layout_width="0dp"
+                android:layout_height="75dp"
+                android:layout_weight="1"
+                android:src="@drawable/gchead" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/show_ibpr"
+                android:layout_width="0dp"
+                android:layout_height="75dp"
+                android:layout_marginHorizontal="12dp"
+                android:layout_weight="1"
+                android:src="@drawable/ibprdhead" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/show_jsa"
+                android:layout_width="0dp"
+                android:layout_height="75dp"
+                android:layout_weight="1"
+                android:src="@drawable/jsahead" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/m_gc"
+                android:layout_width="0dp"
+                android:layout_height="75dp"
+                android:layout_weight="1"
+                android:src="@drawable/mgc" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/m_ibpr"
+                android:layout_width="0dp"
+                android:layout_height="75dp"
+                android:layout_marginHorizontal="12dp"
+                android:layout_weight="1"
+                android:src="@drawable/mibpr" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/logout"
+                android:layout_width="0dp"
+                android:layout_height="75dp"
+                android:layout_weight="1"
+                android:src="@drawable/logout" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="175dp"
+        android:layout_height="175dp"
+        android:layout_marginBottom="24dp"
+        android:src="@drawable/bss"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

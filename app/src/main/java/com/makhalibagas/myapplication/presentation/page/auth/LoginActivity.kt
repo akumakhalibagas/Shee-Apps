@@ -53,7 +53,6 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-
     private fun initObserver() {
         collectLifecycleFlow(viewModel.login) { state ->
             when (state) {
@@ -68,7 +67,9 @@ class LoginActivity : AppCompatActivity() {
                     startActivity(Intent(this, MainActivity::class.java))
                     finishAffinity()
                 }
-                is UiStateWrapper.Error -> {}
+                is UiStateWrapper.Error -> {
+                    Toast.makeText(this, "error atau username password salah", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }

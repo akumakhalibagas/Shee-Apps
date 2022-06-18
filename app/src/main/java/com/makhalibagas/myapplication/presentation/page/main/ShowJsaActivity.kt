@@ -1,5 +1,7 @@
 package com.makhalibagas.myapplication.presentation.page.main
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -30,19 +32,19 @@ class ShowJsaActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        supportActionBar?.hide()
         initView()
         initListener()
         initObserver()
     }
 
-    private fun initView(){
+    private fun initView() {
         binding.apply {
             itemJsaAdapter = ItemJsaAdapter()
             included.rvJsa.adapter = itemJsaAdapter
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun initListener() {
         binding.apply {
             btPdf.setOnClickListener {
@@ -52,6 +54,12 @@ class ShowJsaActivity : AppCompatActivity() {
 
             btExcel.setOnClickListener {
                 createExcelJsaFile()
+            }
+
+            itemJsaAdapter.onItemClick = { data ->
+                val intent = Intent(this@ShowJsaActivity, JsaActivity::class.java)
+                intent.putExtra("jsa", data)
+                startActivity(intent)
             }
         }
     }
@@ -95,14 +103,10 @@ class ShowJsaActivity : AppCompatActivity() {
         cell = row.createCell(5)
         cell.setCellValue("Supervisor")
         cell = row.createCell(6)
-        cell.setCellValue("HSE")
-        cell = row.createCell(7)
-        cell.setCellValue("Tahap")
-        cell = row.createCell(8)
         cell.setCellValue("Bahaya")
-        cell = row.createCell(9)
+        cell = row.createCell(7)
         cell.setCellValue("Pengendalian")
-        cell = row.createCell(10)
+        cell = row.createCell(8)
         cell.setCellValue("Tanggung Jawab")
 
         //column width
@@ -115,8 +119,6 @@ class ShowJsaActivity : AppCompatActivity() {
         sheet.setColumnWidth(6, 20 * 400)
         sheet.setColumnWidth(7, 30 * 200)
         sheet.setColumnWidth(8, 30 * 200)
-        sheet.setColumnWidth(9, 30 * 200)
-        sheet.setColumnWidth(10, 30 * 200)
 
         for (i in list.indices) {
 
@@ -134,14 +136,10 @@ class ShowJsaActivity : AppCompatActivity() {
             cell = row1.createCell(5)
             cell.setCellValue(list[i].supervisor)
             cell = row1.createCell(6)
-            cell.setCellValue(list[i].hse)
-            cell = row1.createCell(7)
-            cell.setCellValue(list[i].tahap)
-            cell = row1.createCell(8)
             cell.setCellValue(list[i].bahaya)
-            cell = row1.createCell(9)
+            cell = row1.createCell(7)
             cell.setCellValue(list[i].pengendalian)
-            cell = row1.createCell(10)
+            cell = row1.createCell(8)
             cell.setCellValue(list[i].tanggungJawab)
 
             sheet.setColumnWidth(0, 20 * 200)
@@ -153,8 +151,6 @@ class ShowJsaActivity : AppCompatActivity() {
             sheet.setColumnWidth(6, 20 * 400)
             sheet.setColumnWidth(7, 30 * 200)
             sheet.setColumnWidth(8, 30 * 200)
-            sheet.setColumnWidth(9, 30 * 200)
-            sheet.setColumnWidth(10, 30 * 200)
         }
 
         val filePath = File(externalMediaDirs[0], "SheeDemoJsa${System.currentTimeMillis()}.xls")

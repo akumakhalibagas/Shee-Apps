@@ -1,25 +1,35 @@
 package com.makhalibagas.myapplication.presentation.page.main
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.makhalibagas.myapplication.data.source.Resource
-import com.makhalibagas.myapplication.data.source.remote.request.EditReq
-import com.makhalibagas.myapplication.data.source.remote.request.GreenReq
-import com.makhalibagas.myapplication.data.source.remote.request.IbprReq
-import com.makhalibagas.myapplication.data.source.remote.request.JsaReq
-import com.makhalibagas.myapplication.data.source.remote.response.GreenItem
-import com.makhalibagas.myapplication.data.source.remote.response.IbprItem
-import com.makhalibagas.myapplication.data.source.remote.response.JsaItem
-import com.makhalibagas.myapplication.data.source.remote.response.SheeResponse
+import com.makhalibagas.myapplication.data.source.remote.request.*
+import com.makhalibagas.myapplication.data.source.remote.response.*
 import com.makhalibagas.myapplication.domain.repository.IMainRepository
 import com.makhalibagas.myapplication.presentation.state.UiStateWrapper
 import com.makhalibagas.myapplication.utils.collectLifecycleFlow
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(val repository: IMainRepository) : ViewModel() {
+
+    private var queryGreen : Job? = null
+    private var _allGreenList = emptyList<GreenItem>()
+    private val _greenList = MutableStateFlow<List<GreenItem>>(emptyList())
+    val listGreen = _greenList.asStateFlow()
+
+    private var queryIbpr : Job? = null
+    private var _allIbprList = emptyList<IbprItem>()
+    private val _IbprList = MutableStateFlow<List<IbprItem>>(emptyList())
+    val listIbpr = _IbprList.asStateFlow()
 
     private val _green = MutableSharedFlow<UiStateWrapper<List<GreenItem>>>()
     val green = _green.asSharedFlow()
@@ -54,6 +64,84 @@ class MainViewModel @Inject constructor(val repository: IMainRepository) : ViewM
     private val _addJsa = MutableSharedFlow<UiStateWrapper<SheeResponse>>()
     val addJsa = _addJsa.asSharedFlow()
 
+    private val _editJsa = MutableSharedFlow<UiStateWrapper<SheeResponse>>()
+    val editJsa = _editJsa.asSharedFlow()
+
+    private val _greenMon = MutableSharedFlow<UiStateWrapper<MonitoringItem>>()
+    val greenMon = _greenMon.asSharedFlow()
+
+    private val _ibprMon = MutableSharedFlow<UiStateWrapper<MonitoringItem>>()
+    val ibprMon = _ibprMon.asSharedFlow()
+
+
+    fun getMonGreen() {
+        collectLifecycleFlow(repository.getMonGreen()) { resource ->
+            when (resource) {
+                is Resource.Loading -> {
+                    _greenMon.emit(UiStateWrapper.Loading(true))
+                }
+                is Resource.Success -> {
+                    _greenMon.emit(UiStateWrapper.Loading(false))
+                    _greenMon.emit(UiStateWrapper.Success(resource.data))
+                }
+                is Resource.Error -> {
+                    _greenMon.emit(UiStateWrapper.Loading(false))
+                }
+            }
+        }
+    }
+
+    fun getMonIbpr() {
+        collectLifecycleFlow(repository.getMonIbpr()) { resource ->
+            when (resource) {
+                is Resource.Loading -> {
+                    _ibprMon.emit(UiStateWrapper.Loading(true))
+                }
+                is Resource.Success -> {
+                    _ibprMon.emit(UiStateWrapper.Loading(false))
+                    _ibprMon.emit(UiStateWrapper.Success(resource.data))
+                }
+                is Resource.Error -> {
+                    _ibprMon.emit(UiStateWrapper.Loading(false))
+                }
+            }
+        }
+    }
+
+    fun queryGreenDebounced(query: String) {
+        queryGreen?.cancel()
+        queryGreen = viewModelScope.launch {
+            delay(500)
+            queryGreen(query)
+        }
+    }
+
+    private fun queryGreen(query: String) {
+        _greenList.value = _allGreenList
+        if (query == "All") {
+            _greenList.value = _allGreenList
+        }else{
+            _greenList.value = listGreen.value.filter { it.shift!!.contains(query, true) || it.status!!.contains(query, true) }
+        }
+    }
+
+    fun queryIbprDebounced(query: String) {
+        queryIbpr?.cancel()
+        queryIbpr = viewModelScope.launch {
+            delay(500)
+            queryIbpr(query)
+        }
+    }
+
+    private fun queryIbpr(query: String) {
+        _IbprList.value = _allIbprList
+        if (query == "All"){
+            _IbprList.value = _allIbprList
+        }else{
+            _IbprList.value = listIbpr.value.filter { it.shift!!.contains(query, true) || it.status!!.contains(query, true) }
+        }
+    }
+
     fun getGreen() {
         collectLifecycleFlow(repository.getGreen()) { resource ->
             when (resource) {
@@ -63,6 +151,7 @@ class MainViewModel @Inject constructor(val repository: IMainRepository) : ViewM
                 is Resource.Success -> {
                     _green.emit(UiStateWrapper.Loading(false))
                     _green.emit(UiStateWrapper.Success(resource.data))
+                    _allGreenList = resource.data
                 }
                 is Resource.Error -> {
                     _green.emit(UiStateWrapper.Loading(false))
@@ -105,7 +194,7 @@ class MainViewModel @Inject constructor(val repository: IMainRepository) : ViewM
         }
     }
 
-    fun editGreen(edit: EditReq) {
+    fun editGreen(edit: EditGreenReq) {
         collectLifecycleFlow(repository.editGreen(edit)) { resource ->
             when (resource) {
                 is Resource.Loading -> {
@@ -131,6 +220,7 @@ class MainViewModel @Inject constructor(val repository: IMainRepository) : ViewM
                 is Resource.Success -> {
                     _ibpr.emit(UiStateWrapper.Loading(false))
                     _ibpr.emit(UiStateWrapper.Success(resource.data))
+                    _allIbprList = resource.data
                 }
                 is Resource.Error -> {
                     _ibpr.emit(UiStateWrapper.Loading(false))
@@ -143,14 +233,14 @@ class MainViewModel @Inject constructor(val repository: IMainRepository) : ViewM
         collectLifecycleFlow(repository.delIbpr(id)) { resource ->
             when (resource) {
                 is Resource.Loading -> {
-                    _delGreen.emit(UiStateWrapper.Loading(true))
+                    _delIbpr.emit(UiStateWrapper.Loading(true))
                 }
                 is Resource.Success -> {
-                    _delGreen.emit(UiStateWrapper.Loading(false))
-                    _delGreen.emit(UiStateWrapper.Success(resource.data))
+                    _delIbpr.emit(UiStateWrapper.Loading(false))
+                    _delIbpr.emit(UiStateWrapper.Success(resource.data))
                 }
                 is Resource.Error -> {
-                    _delGreen.emit(UiStateWrapper.Loading(false))
+                    _delIbpr.emit(UiStateWrapper.Loading(false))
                 }
             }
         }
@@ -173,18 +263,18 @@ class MainViewModel @Inject constructor(val repository: IMainRepository) : ViewM
         }
     }
 
-    fun editIbpr(edit: EditReq) {
+    fun editIbpr(edit: EditIbprReq) {
         collectLifecycleFlow(repository.editIbpr(edit)) { resource ->
             when (resource) {
                 is Resource.Loading -> {
-                    _editGreen.emit(UiStateWrapper.Loading(true))
+                    _editIbpr.emit(UiStateWrapper.Loading(true))
                 }
                 is Resource.Success -> {
-                    _editGreen.emit(UiStateWrapper.Loading(false))
-                    _editGreen.emit(UiStateWrapper.Success(resource.data))
+                    _editIbpr.emit(UiStateWrapper.Loading(false))
+                    _editIbpr.emit(UiStateWrapper.Success(resource.data))
                 }
                 is Resource.Error -> {
-                    _editGreen.emit(UiStateWrapper.Loading(false))
+                    _editIbpr.emit(UiStateWrapper.Loading(false))
                 }
             }
         }
@@ -241,4 +331,20 @@ class MainViewModel @Inject constructor(val repository: IMainRepository) : ViewM
         }
     }
 
+    fun editJsa(edit: EditJsaReq) {
+        collectLifecycleFlow(repository.editJsa(edit)) { resource ->
+            when (resource) {
+                is Resource.Loading -> {
+                    _editJsa.emit(UiStateWrapper.Loading(true))
+                }
+                is Resource.Success -> {
+                    _editJsa.emit(UiStateWrapper.Loading(false))
+                    _editJsa.emit(UiStateWrapper.Success(resource.data))
+                }
+                is Resource.Error -> {
+                    _editJsa.emit(UiStateWrapper.Loading(false))
+                }
+            }
+        }
+    }
 }

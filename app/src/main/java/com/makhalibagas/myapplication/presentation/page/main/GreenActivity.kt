@@ -10,7 +10,9 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.makhalibagas.myapplication.R
+import com.makhalibagas.myapplication.data.source.remote.request.EditGreenReq
 import com.makhalibagas.myapplication.data.source.remote.request.GreenReq
+import com.makhalibagas.myapplication.data.source.remote.response.GreenItem
 import com.makhalibagas.myapplication.databinding.ActivityGreenBinding
 import com.makhalibagas.myapplication.presentation.state.UiStateWrapper
 import com.makhalibagas.myapplication.utils.*
@@ -29,10 +31,35 @@ class GreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         timePicker = TimePickerHelper(this, is24HourView = false, isSpinnerType = false)
-        supportActionBar?.title = "Add Green"
+        initView()
         initListener()
         initObserver()
     }
+
+    private fun initView() {
+        val green = intent.getParcelableExtra<GreenItem>("green")
+        binding.apply {
+            if (green != null) {
+                btnSave.text = "Edit"
+                etTgl.setText(changeDateFormat(green.date.toString(), "yyyy-MM-dd"))
+                etJam.setText(changeDateFormat(green.date.toString(), "HH:mm:ss"))
+                etShift.setText(green.shift)
+                etSite.setText(green.site)
+                etPelapor.setText(green.pelapor)
+                etDp.setText(green.department)
+                etLokasi.setText(green.lokasi)
+                etKondisi.setText(green.kondisi)
+                etSaran.setText(green.saran)
+                etDibicarakan.setText(green.dibicarakan)
+                etStatus.setText(green.status)
+                etCategory.setText(green.kategori)
+            } else {
+                btnSave.text = "Simpan"
+                btnHapus.visibility = View.GONE
+            }
+        }
+    }
+
 
     @SuppressLint("ClickableViewAccessibility")
     private fun initListener() {
@@ -40,7 +67,7 @@ class GreenActivity : AppCompatActivity() {
 
             etTgl.apply {
                 onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
-                    if(hasFocus) {
+                    if (hasFocus) {
                         v?.showDatePicker {
                             val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
                             val dateSelected: String = dateFormat.format(it.time)
@@ -59,7 +86,7 @@ class GreenActivity : AppCompatActivity() {
 
             etJam.apply {
                 onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
-                    if(hasFocus) {
+                    if (hasFocus) {
                         showTimePickerDialog()
                     }
                 }
@@ -134,21 +161,47 @@ class GreenActivity : AppCompatActivity() {
                 }
             }
 
+            btnHapus.setOnClickListener {
+                val green = intent.getParcelableExtra<GreenItem>("green")
+                viewModel.delGreen(green!!.id.toString())
+            }
+
             btnSave.setOnClickListener {
-                viewModel.addGreen(
-                    GreenReq(
-                        "${etTgl.text.toString()} ${etTgl.text.toString()}}",
-                        etSaran.text.toString(),
-                        etKondisi.text.toString(),
-                        etLokasi.text.toString(),
-                        etDibicarakan.text.toString(),
-                        etCategory.text.toString(),
-                        etStatus.text.toString(),
-//                        etShift.text.toString(),
-//                        etSite.text.toString(),
-//                        etDp.text.toString()
+                val green = intent.getParcelableExtra<GreenItem>("green")
+                if (green != null) {
+                    viewModel.editGreen(
+                        EditGreenReq(
+                            green.id!!.toInt(),
+                            "${etTgl.text.toString()} ${etJam.text.toString()}",
+                            etSaran.text.toString(),
+                            etKondisi.text.toString(),
+                            etLokasi.text.toString(),
+                            etDibicarakan.text.toString(),
+                            etCategory.text.toString(),
+                            etStatus.text.toString(),
+                            etShift.text.toString(),
+                            etSite.text.toString(),
+                            etDp.text.toString(),
+                            etPelapor.text.toString()
+                        )
                     )
-                )
+                } else {
+                    viewModel.addGreen(
+                        GreenReq(
+                            "${etTgl.text.toString()} ${etJam.text.toString()}",
+                            etSaran.text.toString(),
+                            etKondisi.text.toString(),
+                            etLokasi.text.toString(),
+                            etDibicarakan.text.toString(),
+                            etCategory.text.toString(),
+                            etStatus.text.toString(),
+                            etShift.text.toString(),
+                            etSite.text.toString(),
+                            etDp.text.toString(),
+                            etPelapor.text.toString()
+                        )
+                    )
+                }
             }
         }
     }
@@ -179,7 +232,56 @@ class GreenActivity : AppCompatActivity() {
                     binding.apply {
                         loading.isVisible = false
                         btnSave.isVisible = true
-                        Toast.makeText(this@GreenActivity, "Berhasil Tambah Data", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this@GreenActivity,
+                            "Berhasil Tambah Data",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        startActivity(Intent(this@GreenActivity, MainActivity::class.java))
+                    }
+                }
+                is UiStateWrapper.Error -> {}
+            }
+        }
+
+        collectLifecycleFlow(viewModel.editGreen) { state ->
+            when (state) {
+                is UiStateWrapper.Loading -> {
+                    binding.apply {
+                        loading.isVisible = state.isLoading
+                        btnSave.isVisible = false
+                    }
+                }
+                is UiStateWrapper.Success -> {
+                    binding.apply {
+                        loading.isVisible = false
+                        btnSave.isVisible = true
+                        Toast.makeText(this@GreenActivity, "Berhasil Edit Data", Toast.LENGTH_SHORT)
+                            .show()
+                        startActivity(Intent(this@GreenActivity, MainActivity::class.java))
+                    }
+                }
+                is UiStateWrapper.Error -> {}
+            }
+        }
+
+        collectLifecycleFlow(viewModel.delGreen) { state ->
+            when (state) {
+                is UiStateWrapper.Loading -> {
+                    binding.apply {
+                        loading.isVisible = state.isLoading
+                        btnSave.isVisible = false
+                    }
+                }
+                is UiStateWrapper.Success -> {
+                    binding.apply {
+                        loading.isVisible = false
+                        btnSave.isVisible = true
+                        Toast.makeText(
+                            this@GreenActivity,
+                            "Berhasil Hapus Data",
+                            Toast.LENGTH_SHORT
+                        ).show()
                         startActivity(Intent(this@GreenActivity, MainActivity::class.java))
                     }
                 }

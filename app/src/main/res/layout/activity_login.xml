@@ -3,14 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="#DDFFFC"
     android:gravity="center_vertical"
     android:orientation="vertical"
     android:padding="16dp">
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/logok3" />
+
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login Shee"
+        android:text="Login She"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold" />
@@ -61,7 +68,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
-        android:background="@color/purple_500"
+        android:background="#03D1BE"
         android:paddingStart="6dp"
         android:text="Login"
         android:textAllCaps="false"
@@ -79,6 +86,5 @@
         android:textAllCaps="false"
         android:textColor="@android:color/black"
         tools:ignore="RtlSymmetry" />
-
 
 </androidx.appcompat.widget.LinearLayoutCompat>

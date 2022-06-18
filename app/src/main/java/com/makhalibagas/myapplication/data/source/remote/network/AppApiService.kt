@@ -34,7 +34,7 @@ interface AppApiService {
 
     @PUT("green")
     suspend fun editGreen(
-        @Body editReq: EditReq
+        @Body editReq: EditGreenReq
     ): SheeResponse
 
     //IBPR
@@ -54,7 +54,7 @@ interface AppApiService {
 
     @PUT("ibpr")
     suspend fun editIbpr(
-        @Body editReq: EditReq
+        @Body editReq: EditIbprReq
     ): SheeResponse
 
     //Jsa
@@ -71,4 +71,15 @@ interface AppApiService {
     suspend fun addJsa(
         @Body jsReq: JsaReq
     ): SheeResponse
+
+    @PUT("jsa")
+    suspend fun editJsa(
+        @Body editReq: EditJsaReq
+    ): SheeResponse
+
+    @GET("green/monitoring")
+    suspend fun getMonGreen(): MonitoringItem
+
+    @GET("ibpr/monitoring")
+    suspend fun getMonIbpr(): MonitoringItem
 }

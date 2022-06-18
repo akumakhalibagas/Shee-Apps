@@ -1,189 +1,238 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:scrollbars="none">
+    android:orientation="vertical">
 
     <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
-
+        android:layout_height="60dp"
+        android:background="@color/white">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Perusahaan" />
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/et_perusahaan"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_shape"
-            android:imeOptions="actionNext"
-            android:paddingStart="6dp"
-            tools:ignore="RtlSymmetry" />
-
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Pekerja" />
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/et_pekerja"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_shape"
-            android:imeOptions="actionNext"
-            android:paddingStart="6dp"
-            tools:ignore="RtlSymmetry" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Pekerjaan" />
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/et_pekerjaan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_shape"
-            android:imeOptions="actionNext"
-            android:inputType="text|textMultiLine"
-            android:lines="3"
-            android:paddingStart="6dp"
-            tools:ignore="RtlSymmetry" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Supervisor" />
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/et_supervisor"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_shape"
-            android:imeOptions="actionNext"
-            android:inputType="text|textMultiLine"
-            android:lines="3"
-            android:paddingStart="6dp"
-            tools:ignore="RtlSymmetry" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="HSE Departement" />
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/et_hse"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_shape"
-            android:imeOptions="actionNext"
-            android:inputType="text|textMultiLine"
-            android:lines="3"
-            android:paddingStart="6dp"
-            tools:ignore="RtlSymmetry" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Tahap Pekerjaan" />
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/et_tahap"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_shape"
-            android:imeOptions="actionNext"
-            android:paddingStart="6dp"
-            tools:ignore="RtlSymmetry" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Potensi Bahaya" />
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/et_bahaya"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_shape"
-            android:imeOptions="actionNext"
-            android:paddingStart="6dp"
-            tools:ignore="RtlSymmetry" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Upaya Pengendalian" />
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/et_pengendalian"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_shape"
-            android:imeOptions="actionNext"
-            android:paddingStart="6dp"
-            tools:ignore="RtlSymmetry" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Tanggung Jawab" />
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/et_tanggung_jawab"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_shape"
-            android:imeOptions="actionNext"
-            android:paddingStart="6dp"
-            tools:ignore="RtlSymmetry" />
-
-        <ProgressBar
-            android:id="@+id/loading"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="16dp"
-            android:visibility="gone" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_save"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="16dp"
-            android:background="@color/purple_500"
-            android:paddingStart="6dp"
-            android:text="Simpan"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            tools:ignore="RtlSymmetry" />
-
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="JSA"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-</ScrollView>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Tanggal" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_tgl"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_shape"
+                android:imeOptions="actionNext"
+                android:inputType="none"
+                android:paddingStart="6dp"
+                tools:ignore="RtlSymmetry" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Jam" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_jam"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_shape"
+                android:imeOptions="actionNext"
+                android:inputType="none"
+                android:paddingStart="6dp"
+                tools:ignore="RtlSymmetry" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Perusahaan" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_perusahaan"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_shape"
+                android:imeOptions="actionNext"
+                android:paddingStart="6dp"
+                tools:ignore="RtlSymmetry" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Pekerja" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_pekerja"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_shape"
+                android:imeOptions="actionNext"
+                android:paddingStart="6dp"
+                tools:ignore="RtlSymmetry" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Pekerjaan" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_pekerjaan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_shape"
+                android:imeOptions="actionNext"
+                android:inputType="text|textMultiLine"
+                android:lines="3"
+                android:paddingStart="6dp"
+                tools:ignore="RtlSymmetry" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Supervisor" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_supervisor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_shape"
+                android:imeOptions="actionNext"
+                android:inputType="text|textMultiLine"
+                android:lines="3"
+                android:paddingStart="6dp"
+                tools:ignore="RtlSymmetry" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="SHE Departement" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_she"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_shape"
+                android:imeOptions="actionNext"
+                android:inputType="text|textMultiLine"
+                android:lines="3"
+                android:paddingStart="6dp"
+                tools:ignore="RtlSymmetry" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Potensi Bahaya" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_bahaya"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_shape"
+                android:imeOptions="actionNext"
+                android:paddingStart="6dp"
+                tools:ignore="RtlSymmetry" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Upaya Pengendalian" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_pengendalian"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_shape"
+                android:imeOptions="actionNext"
+                android:paddingStart="6dp"
+                tools:ignore="RtlSymmetry" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Tanggung Jawab" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_tanggung_jawab"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_shape"
+                android:imeOptions="actionNext"
+                android:paddingStart="6dp"
+                tools:ignore="RtlSymmetry" />
+
+            <ProgressBar
+                android:id="@+id/loading"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:visibility="gone" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_save"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/purple_500"
+                android:paddingStart="6dp"
+                android:text="Simpan"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                tools:ignore="RtlSymmetry" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_hapus"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:background="#F44336"
+                android:paddingStart="6dp"
+                android:text="Hapus"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                tools:ignore="RtlSymmetry" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </ScrollView>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

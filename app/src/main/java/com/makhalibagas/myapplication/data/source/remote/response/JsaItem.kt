@@ -1,7 +1,10 @@
 package com.makhalibagas.myapplication.data.source.remote.response
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class JsaItem(
 
 	@field:SerializedName("bahaya")
@@ -16,17 +19,11 @@ data class JsaItem(
 	@field:SerializedName("pekerjaan")
 	val pekerjaan: String? = null,
 
-	@field:SerializedName("tahap")
-	val tahap: String? = null,
-
 	@field:SerializedName("id")
 	val id: String? = null,
 
 	@field:SerializedName("tanggal")
 	val tanggal: String? = null,
-
-	@field:SerializedName("hse")
-	val hse: String? = null,
 
 	@field:SerializedName("tanggung_jawab")
 	val tanggungJawab: String? = null,
@@ -35,5 +32,9 @@ data class JsaItem(
 	val pekerja: String? = null,
 
 	@field:SerializedName("supervisor")
-	val supervisor: String? = null
-)
+	val supervisor: String? = null,
+
+	@field:SerializedName("department")
+	val department: String? = null
+
+) : Parcelable

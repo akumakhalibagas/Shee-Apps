@@ -1,13 +1,19 @@
 package com.makhalibagas.myapplication.presentation.page.main
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doOnTextChanged
+import com.makhalibagas.myapplication.R
 import com.makhalibagas.myapplication.data.source.remote.response.GreenItem
 import com.makhalibagas.myapplication.databinding.ActivityShowGreenBinding
 import com.makhalibagas.myapplication.presentation.page.adapter.ItemGreenAdapter
 import com.makhalibagas.myapplication.presentation.state.UiStateWrapper
+import com.makhalibagas.myapplication.utils.Datas
 import com.makhalibagas.myapplication.utils.PDFConverter
 import com.makhalibagas.myapplication.utils.collectLifecycleFlow
 import com.makhalibagas.myapplication.utils.viewBinding
@@ -30,19 +36,19 @@ class ShowGreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        supportActionBar?.hide()
         initView()
         initListener()
         initObserver()
     }
 
-    private fun initView(){
+    private fun initView() {
         binding.apply {
             itemGreenAdapter = ItemGreenAdapter()
             included.rvGreen.adapter = itemGreenAdapter
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun initListener() {
         binding.apply {
             btPdf.setOnClickListener {
@@ -53,24 +59,54 @@ class ShowGreenActivity : AppCompatActivity() {
             btExcel.setOnClickListener {
                 createExcelFile()
             }
+
+            etFilter.apply {
+                setAdapter(
+                    ArrayAdapter(
+                        this@ShowGreenActivity,
+                        R.layout.item_dropdown,
+                        Datas.filter
+                    )
+                )
+                setOnTouchListener { _, _ ->
+                    showDropDown()
+                    return@setOnTouchListener false
+                }
+
+                doOnTextChanged { text, _, _, _ ->
+                    viewModel.queryGreenDebounced(text.toString())
+                }
+            }
+
+            itemGreenAdapter.onItemClick = { data ->
+                val intent = Intent(this@ShowGreenActivity, GreenActivity::class.java)
+                intent.putExtra("green", data)
+                startActivity(intent)
+            }
         }
     }
 
     private fun initObserver() {
         viewModel.getGreen()
+        viewModel.queryGreenDebounced("All")
+
         collectLifecycleFlow(viewModel.green) { state ->
             when (state) {
                 is UiStateWrapper.Loading -> {}
                 is UiStateWrapper.Success -> {
-                    list = state.data
-                    itemGreenAdapter.setData(list)
                     binding.apply {
                         btPdf.isEnabled = true
                         btExcel.isEnabled = true
+                        etFilter.isEnabled = true
                     }
                 }
                 is UiStateWrapper.Error -> {}
             }
+        }
+
+        collectLifecycleFlow(viewModel.listGreen){
+            list = it
+            itemGreenAdapter.setData(list)
         }
     }
 
@@ -99,6 +135,14 @@ class ShowGreenActivity : AppCompatActivity() {
         cell.setCellValue("STATUS")
         cell = row.createCell(8)
         cell.setCellValue("CATEGORY")
+        cell = row.createCell(9)
+        cell.setCellValue("SHIFT")
+        cell = row.createCell(10)
+        cell.setCellValue("SITE")
+        cell = row.createCell(11)
+        cell.setCellValue("DEPARTEMENT")
+        cell = row.createCell(12)
+        cell.setCellValue("PELAPOR")
 
         //column width
         sheet.setColumnWidth(0, 20 * 200)
@@ -110,6 +154,10 @@ class ShowGreenActivity : AppCompatActivity() {
         sheet.setColumnWidth(6, 20 * 400)
         sheet.setColumnWidth(7, 30 * 200)
         sheet.setColumnWidth(8, 30 * 200)
+        sheet.setColumnWidth(9, 20 * 400)
+        sheet.setColumnWidth(10, 30 * 200)
+        sheet.setColumnWidth(11, 30 * 200)
+        sheet.setColumnWidth(12, 30 * 200)
 
         for (i in list.indices) {
 
@@ -132,6 +180,14 @@ class ShowGreenActivity : AppCompatActivity() {
             cell.setCellValue(list[i].status)
             cell = row1.createCell(8)
             cell.setCellValue(list[i].kategori)
+            cell = row1.createCell(9)
+            cell.setCellValue(list[i].shift)
+            cell = row1.createCell(10)
+            cell.setCellValue(list[i].site)
+            cell = row1.createCell(11)
+            cell.setCellValue(list[i].department)
+            cell = row1.createCell(12)
+            cell.setCellValue(list[i].pelapor)
 
             sheet.setColumnWidth(0, 20 * 200)
             sheet.setColumnWidth(1, 30 * 200)
@@ -142,6 +198,10 @@ class ShowGreenActivity : AppCompatActivity() {
             sheet.setColumnWidth(6, 20 * 400)
             sheet.setColumnWidth(7, 30 * 200)
             sheet.setColumnWidth(8, 30 * 200)
+            sheet.setColumnWidth(9, 20 * 400)
+            sheet.setColumnWidth(10, 30 * 200)
+            sheet.setColumnWidth(11, 30 * 200)
+            sheet.setColumnWidth(12, 30 * 200)
         }
 
         val filePath = File(externalMediaDirs[0], "SheeDemoGreen${System.currentTimeMillis()}.xls")

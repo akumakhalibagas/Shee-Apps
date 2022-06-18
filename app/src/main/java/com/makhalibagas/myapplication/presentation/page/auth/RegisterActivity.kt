@@ -26,7 +26,6 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        supportActionBar?.hide()
         initListener()
         initObserver()
     }
@@ -87,7 +86,9 @@ class RegisterActivity : AppCompatActivity() {
                     startActivity(Intent(this, LoginActivity::class.java))
                     finishAffinity()
                 }
-                is UiStateWrapper.Error -> {}
+                is UiStateWrapper.Error -> {
+                    Toast.makeText(this, "error atau username sudah ada", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }

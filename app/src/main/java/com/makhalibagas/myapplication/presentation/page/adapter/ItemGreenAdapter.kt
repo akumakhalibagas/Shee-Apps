@@ -39,7 +39,7 @@ class ItemGreenAdapter : RecyclerView.Adapter<ItemGreenAdapter.ViewHolder>() {
 
         fun bind(data: GreenItem) {
             binding.apply {
-                tvNo.text = layoutPosition.toString()
+                tvNo.text = "${layoutPosition+1}"
                 tvDate.text = changeDateFormat(data.date.toString(), "dd MMMM yyyy")
                 tvJam.text = changeDateFormat(data.date.toString(), "HH:mm")
                 tvKondisi.text = data.kondisi
@@ -48,6 +48,10 @@ class ItemGreenAdapter : RecyclerView.Adapter<ItemGreenAdapter.ViewHolder>() {
                 tvDibicarakan.text = data.dibicarakan
                 tvStatus.text = data.status
                 tvCategory.text = data.kategori
+                tvShift.text = data.shift
+                tvSite.text = data.site
+                tvDp.text = data.department
+                root.setOnClickListener { onItemClick!!.invoke(data) }
             }
         }
     }

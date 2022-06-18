@@ -39,15 +39,19 @@ class ItemIbprAdapter : RecyclerView.Adapter<ItemIbprAdapter.ViewHolder>() {
 
         fun bind(data: IbprItem) {
             binding.apply {
-                tvNo.text = layoutPosition.toString()
+                tvNo.text = "${layoutPosition+1}"
                 tvDate.text = changeDateFormat(data.date.toString(), "dd MMMM yyyy")
                 tvJam.text = changeDateFormat(data.date.toString(), "HH:mm")
                 tvResiko.text = data.resiko
                 tvKodeBahaya.text = data.kodeBahaya
                 tvStatus.text = data.status
                 tvTemuan.text = data.temuan
-                tvBahaya.text = data.kodeBahaya
+                tvBahaya.text = data.bahaya
                 tvPengendalian.text = data.pengendalianResiko
+                tvShift.text = data.shift
+                tvSite.text = data.site
+                tvDp.text = data.department
+                root.setOnClickListener { onItemClick!!.invoke(data) }
             }
         }
     }

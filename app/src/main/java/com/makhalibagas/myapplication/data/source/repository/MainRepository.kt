@@ -3,14 +3,8 @@ package com.makhalibagas.myapplication.data.source.repository
 import com.makhalibagas.myapplication.data.source.Resource
 import com.makhalibagas.myapplication.data.source.remote.datasource.MainRemoteDataSource
 import com.makhalibagas.myapplication.data.source.remote.network.AppApiResponse
-import com.makhalibagas.myapplication.data.source.remote.request.EditReq
-import com.makhalibagas.myapplication.data.source.remote.request.GreenReq
-import com.makhalibagas.myapplication.data.source.remote.request.IbprReq
-import com.makhalibagas.myapplication.data.source.remote.request.JsaReq
-import com.makhalibagas.myapplication.data.source.remote.response.GreenItem
-import com.makhalibagas.myapplication.data.source.remote.response.IbprItem
-import com.makhalibagas.myapplication.data.source.remote.response.JsaItem
-import com.makhalibagas.myapplication.data.source.remote.response.SheeResponse
+import com.makhalibagas.myapplication.data.source.remote.request.*
+import com.makhalibagas.myapplication.data.source.remote.response.*
 import com.makhalibagas.myapplication.domain.repository.IMainRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
@@ -63,7 +57,7 @@ class MainRepository @Inject constructor(val remoteDataSource: MainRemoteDataSou
             }
         }
 
-    override fun editGreen(edit: EditReq): Flow<Resource<SheeResponse>> =
+    override fun editGreen(edit: EditGreenReq): Flow<Resource<SheeResponse>> =
         flow {
             emit(Resource.Loading)
             when (val apiResource =
@@ -117,7 +111,7 @@ class MainRepository @Inject constructor(val remoteDataSource: MainRemoteDataSou
                 }
             }
         }
-    override fun editIbpr(edit: EditReq): Flow<Resource<SheeResponse>> =
+    override fun editIbpr(edit: EditIbprReq): Flow<Resource<SheeResponse>> =
         flow {
             emit(Resource.Loading)
             when (val apiResource =
@@ -164,6 +158,48 @@ class MainRepository @Inject constructor(val remoteDataSource: MainRemoteDataSou
             emit(Resource.Loading)
             when (val apiResource =
                 remoteDataSource.addJsa(jsa).first()) {
+                is AppApiResponse.Success -> {
+                    emit(Resource.Success(apiResource.data))
+                }
+                is AppApiResponse.Error -> {
+                    emit(Resource.Error(apiResource.msg))
+                }
+            }
+        }
+
+    override fun editJsa(edit: EditJsaReq): Flow<Resource<SheeResponse>> =
+        flow {
+            emit(Resource.Loading)
+            when (val apiResource =
+                remoteDataSource.editJsa(edit).first()) {
+                is AppApiResponse.Success -> {
+                    emit(Resource.Success(apiResource.data))
+                }
+                is AppApiResponse.Error -> {
+                    emit(Resource.Error(apiResource.msg))
+                }
+            }
+        }
+
+    override fun getMonGreen(): Flow<Resource<MonitoringItem>> =
+        flow {
+            emit(Resource.Loading)
+            when (val apiResource =
+                remoteDataSource.getMonGreen().first()) {
+                is AppApiResponse.Success -> {
+                    emit(Resource.Success(apiResource.data))
+                }
+                is AppApiResponse.Error -> {
+                    emit(Resource.Error(apiResource.msg))
+                }
+            }
+        }
+
+    override fun getMonIbpr(): Flow<Resource<MonitoringItem>> =
+        flow {
+            emit(Resource.Loading)
+            when (val apiResource =
+                remoteDataSource.getMonIbpr().first()) {
                 is AppApiResponse.Success -> {
                     emit(Resource.Success(apiResource.data))
                 }

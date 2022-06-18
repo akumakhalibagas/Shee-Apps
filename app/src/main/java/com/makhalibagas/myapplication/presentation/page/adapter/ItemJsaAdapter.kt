@@ -38,13 +38,16 @@ class ItemJsaAdapter : RecyclerView.Adapter<ItemJsaAdapter.ViewHolder>() {
 
         fun bind(data: JsaItem) {
             binding.apply {
-                tvNo.text = layoutPosition.toString()
+                tvNo.text = "${layoutPosition+1}"
                 tvPekerja.text = data.pekerja
-                tvDepartemen.text = data.perusahaan
-                tvTahap.text = data.tahap
+                tvDepartemen.text = data.department
+                tvPerusahaan.text = data.perusahaan
                 tvPotensi.text = data.bahaya
                 tvUpaya.text = data.pengendalian
                 tvTanggungJwb.text = data.tanggungJawab
+                tvBahaya.text = data.bahaya
+                tvSupervisor.text = data.supervisor
+                root.setOnClickListener { onItemClick!!.invoke(data) }
             }
         }
     }

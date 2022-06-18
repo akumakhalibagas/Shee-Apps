@@ -9,7 +9,10 @@ import com.makhalibagas.myapplication.presentation.page.auth.LoginActivity
 import com.makhalibagas.myapplication.utils.Shareds
 import com.makhalibagas.myapplication.utils.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @SuppressLint("CustomSplashScreen")
@@ -18,7 +21,7 @@ class SplashActivity : AppCompatActivity() {
     @Inject
     lateinit var shareds: Shareds
     private val binding by viewBinding(ActivitySplashBinding::inflate)
-    val activityScope = CoroutineScope(Dispatchers.Main)
+    private val activityScope = CoroutineScope(Dispatchers.Main)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,10 +39,5 @@ class SplashActivity : AppCompatActivity() {
                 finish()
             }
         }
-    }
-
-    override fun onPause() {
-        activityScope.cancel()
-        super.onPause()
     }
 }

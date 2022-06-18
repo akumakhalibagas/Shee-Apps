@@ -10,7 +10,10 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.makhalibagas.myapplication.R
+import com.makhalibagas.myapplication.data.source.remote.request.EditIbprReq
 import com.makhalibagas.myapplication.data.source.remote.request.IbprReq
+import com.makhalibagas.myapplication.data.source.remote.response.GreenItem
+import com.makhalibagas.myapplication.data.source.remote.response.IbprItem
 import com.makhalibagas.myapplication.databinding.ActivityIbprBinding
 import com.makhalibagas.myapplication.presentation.state.UiStateWrapper
 import com.makhalibagas.myapplication.utils.*
@@ -29,9 +32,34 @@ class IbprActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         timePicker = TimePickerHelper(this, is24HourView = false, isSpinnerType = false)
-        supportActionBar?.title = "Add Ibpr"
+        initView()
         initListener()
         initObserver()
+    }
+
+    private fun initView() {
+        val ibpr = intent.getParcelableExtra<IbprItem>("ibpr")
+        binding.apply {
+            if (ibpr != null) {
+                btnSave.text = "Edit"
+                etTgl.setText(changeDateFormat(ibpr.date.toString(), "yyyy-MM-dd"))
+                etJam.setText(changeDateFormat(ibpr.date.toString(), "HH:mm:ss"))
+                etShift.setText(ibpr.shift)
+                etSite.setText(ibpr.site)
+                etPelapor.setText(ibpr.pelapor)
+                etDp.setText(ibpr.department)
+                etLokasi.setText(ibpr.lokasi)
+                etTemuan.setText(ibpr.temuan)
+                etResiko.setText(ibpr.resiko)
+                etKodeBahaya.setText(ibpr.kodeBahaya)
+                etStatus.setText(ibpr.status)
+                etBahaya.setText(ibpr.bahaya)
+                etPengendalianResiko.setText(ibpr.pengendalianResiko)
+            } else {
+                btnSave.text = "Simpan"
+                btnHapus.visibility = View.GONE
+            }
+        }
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -40,7 +68,7 @@ class IbprActivity : AppCompatActivity() {
 
             etTgl.apply {
                 onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
-                    if(hasFocus) {
+                    if (hasFocus) {
                         v?.showDatePicker {
                             val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
                             val dateSelected: String = dateFormat.format(it.time)
@@ -59,7 +87,7 @@ class IbprActivity : AppCompatActivity() {
 
             etJam.apply {
                 onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
-                    if(hasFocus) {
+                    if (hasFocus) {
                         showTimePickerDialog()
                     }
                 }
@@ -120,21 +148,50 @@ class IbprActivity : AppCompatActivity() {
                     return@setOnTouchListener false
                 }
             }
+
+            btnHapus.setOnClickListener {
+                val ibpr = intent.getParcelableExtra<IbprItem>("ibpr")
+                viewModel.delIbpr(ibpr!!.id.toString())
+            }
+
             btnSave.setOnClickListener {
-                viewModel.addIbpr(
-                    IbprReq(
-                        "${etTgl.text.toString()} ${etTgl.text.toString()}}",
-                        etResiko.text.toString(),
-                        etTemuan.text.toString(),
-                        etPengendalianResiko.text.toString(),
-                        etLokasi.text.toString(),
-                        etKodeBahaya.text.toString(),
-                        etStatus.text.toString(),
-//                        etShift.text.toString(),
-//                        etSite.text.toString(),
-//                        etDp.text.toString()
+                val ibpr = intent.getParcelableExtra<IbprItem>("ibpr")
+                if (ibpr != null) {
+                    viewModel.editIbpr(
+                        EditIbprReq(
+                            ibpr.id!!.toInt(),
+                            "${etTgl.text.toString()} ${etJam.text.toString()}}",
+                            etResiko.text.toString(),
+                            etTemuan.text.toString(),
+                            etPengendalianResiko.text.toString(),
+                            etLokasi.text.toString(),
+                            etKodeBahaya.text.toString(),
+                            etStatus.text.toString(),
+                            etShift.text.toString(),
+                            etSite.text.toString(),
+                            etDp.text.toString(),
+                            etPelapor.text.toString(),
+                            etBahaya.text.toString()
+                        )
                     )
-                )
+                } else {
+                    viewModel.addIbpr(
+                        IbprReq(
+                            "${etTgl.text.toString()} ${etJam.text.toString()}}",
+                            etResiko.text.toString(),
+                            etTemuan.text.toString(),
+                            etPengendalianResiko.text.toString(),
+                            etLokasi.text.toString(),
+                            etKodeBahaya.text.toString(),
+                            etStatus.text.toString(),
+                            etShift.text.toString(),
+                            etSite.text.toString(),
+                            etDp.text.toString(),
+                            etPelapor.text.toString(),
+                            etBahaya.text.toString()
+                        )
+                    )
+                }
             }
         }
     }
@@ -165,7 +222,53 @@ class IbprActivity : AppCompatActivity() {
                     binding.apply {
                         loading.isVisible = false
                         btnSave.isVisible = true
-                        Toast.makeText(this@IbprActivity, "Berhasil Tambah Data", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this@IbprActivity,
+                            "Berhasil Tambah Data",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        startActivity(Intent(this@IbprActivity, MainActivity::class.java))
+                    }
+                }
+                is UiStateWrapper.Error -> {}
+            }
+        }
+
+        collectLifecycleFlow(viewModel.editIbpr) { state ->
+            when (state) {
+                is UiStateWrapper.Loading -> {
+                    binding.apply {
+                        loading.isVisible = state.isLoading
+                        btnSave.isVisible = false
+                    }
+                }
+                is UiStateWrapper.Success -> {
+                    binding.apply {
+                        loading.isVisible = false
+                        btnSave.isVisible = true
+                        Toast.makeText(this@IbprActivity, "Berhasil Edit Data", Toast.LENGTH_SHORT)
+                            .show()
+                        startActivity(Intent(this@IbprActivity, MainActivity::class.java))
+                    }
+                }
+                is UiStateWrapper.Error -> {}
+            }
+        }
+
+        collectLifecycleFlow(viewModel.delIbpr) { state ->
+            when (state) {
+                is UiStateWrapper.Loading -> {
+                    binding.apply {
+                        loading.isVisible = state.isLoading
+                        btnSave.isVisible = false
+                    }
+                }
+                is UiStateWrapper.Success -> {
+                    binding.apply {
+                        loading.isVisible = false
+                        btnSave.isVisible = true
+                        Toast.makeText(this@IbprActivity, "Berhasil Hapus Data", Toast.LENGTH_SHORT)
+                            .show()
                         startActivity(Intent(this@IbprActivity, MainActivity::class.java))
                     }
                 }

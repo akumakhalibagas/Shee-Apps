@@ -1,13 +1,19 @@
 package com.makhalibagas.myapplication.presentation.page.main
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doOnTextChanged
+import com.makhalibagas.myapplication.R
 import com.makhalibagas.myapplication.data.source.remote.response.IbprItem
 import com.makhalibagas.myapplication.databinding.ActivityShowIbprBinding
 import com.makhalibagas.myapplication.presentation.page.adapter.ItemIbprAdapter
 import com.makhalibagas.myapplication.presentation.state.UiStateWrapper
+import com.makhalibagas.myapplication.utils.Datas
 import com.makhalibagas.myapplication.utils.PdfConverterIbpr
 import com.makhalibagas.myapplication.utils.collectLifecycleFlow
 import com.makhalibagas.myapplication.utils.viewBinding
@@ -31,19 +37,19 @@ class ShowIbprActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        supportActionBar?.hide()
         initView()
         initListener()
         initObserver()
     }
 
-    private fun initView(){
+    private fun initView() {
         binding.apply {
             itemIbprAdapter = ItemIbprAdapter()
             included.rvIbpr.adapter = itemIbprAdapter
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun initListener() {
         binding.apply {
             btPdf.setOnClickListener {
@@ -54,27 +60,57 @@ class ShowIbprActivity : AppCompatActivity() {
             btExcel.setOnClickListener {
                 createExcelIbprFile()
             }
+
+            etFilter.apply {
+                setAdapter(
+                    ArrayAdapter(
+                        this@ShowIbprActivity,
+                        R.layout.item_dropdown,
+                        Datas.filter
+                    )
+                )
+                setOnTouchListener { _, _ ->
+                    showDropDown()
+                    return@setOnTouchListener false
+                }
+
+                doOnTextChanged { text, _, _, _ ->
+                    viewModel.queryIbprDebounced(text.toString())
+                }
+            }
+
+            itemIbprAdapter.onItemClick = { data ->
+                val intent = Intent(this@ShowIbprActivity, IbprActivity::class.java)
+                intent.putExtra("ibpr", data)
+                startActivity(intent)
+            }
         }
     }
 
     private fun initObserver() {
         viewModel.getIbpr()
+        viewModel.queryIbprDebounced("All")
 
         collectLifecycleFlow(viewModel.ibpr) { state ->
             when (state) {
                 is UiStateWrapper.Loading -> {}
                 is UiStateWrapper.Success -> {
-                    listIbpr = state.data
-                    itemIbprAdapter.setData(listIbpr)
                     binding.apply {
                         btPdf.isEnabled = true
                         btExcel.isEnabled = true
+                        etFilter.isEnabled = true
                     }
                 }
                 is UiStateWrapper.Error -> {}
             }
         }
+
+        collectLifecycleFlow(viewModel.listIbpr){
+            listIbpr = it
+            itemIbprAdapter.setData(listIbpr)
+        }
     }
+
     private fun createExcelIbprFile() {
         val wb: Workbook = HSSFWorkbook()
         var cell: Cell?
@@ -99,9 +135,17 @@ class ShowIbprActivity : AppCompatActivity() {
         cell = row.createCell(7)
         cell.setCellValue("TEMUAN")
         cell = row.createCell(8)
-        cell.setCellValue("BAHAYA")
-        cell = row.createCell(9)
         cell.setCellValue("PENGENDALIAN RESIKO")
+        cell = row.createCell(9)
+        cell.setCellValue("SHIFT")
+        cell = row.createCell(10)
+        cell.setCellValue("SITE")
+        cell = row.createCell(11)
+        cell.setCellValue("DEPARTEMENT")
+        cell = row.createCell(12)
+        cell.setCellValue("BAHAYA")
+        cell = row.createCell(13)
+        cell.setCellValue("PELAPOR")
 
         //column width
         sheet.setColumnWidth(0, 20 * 200)
@@ -113,7 +157,11 @@ class ShowIbprActivity : AppCompatActivity() {
         sheet.setColumnWidth(6, 20 * 400)
         sheet.setColumnWidth(7, 30 * 200)
         sheet.setColumnWidth(8, 30 * 200)
-        sheet.setColumnWidth(9, 30 * 200)
+        sheet.setColumnWidth(9, 20 * 400)
+        sheet.setColumnWidth(10, 30 * 200)
+        sheet.setColumnWidth(11, 30 * 200)
+        sheet.setColumnWidth(12, 30 * 200)
+        sheet.setColumnWidth(13, 30 * 200)
 
         for (i in listIbpr.indices) {
 
@@ -135,9 +183,17 @@ class ShowIbprActivity : AppCompatActivity() {
             cell = row1.createCell(7)
             cell.setCellValue(listIbpr[i].temuan)
             cell = row1.createCell(8)
-            cell.setCellValue(listIbpr[i].kodeBahaya)
-            cell = row1.createCell(9)
             cell.setCellValue(listIbpr[i].pengendalianResiko)
+            cell = row1.createCell(9)
+            cell.setCellValue(listIbpr[i].shift)
+            cell = row1.createCell(10)
+            cell.setCellValue(listIbpr[i].site)
+            cell = row1.createCell(11)
+            cell.setCellValue(listIbpr[i].department)
+            cell = row1.createCell(12)
+            cell.setCellValue(listIbpr[i].bahaya)
+            cell = row1.createCell(13)
+            cell.setCellValue(listIbpr[i].pelapor)
 
             sheet.setColumnWidth(0, 20 * 200)
             sheet.setColumnWidth(1, 30 * 200)
@@ -148,7 +204,11 @@ class ShowIbprActivity : AppCompatActivity() {
             sheet.setColumnWidth(6, 20 * 400)
             sheet.setColumnWidth(7, 30 * 200)
             sheet.setColumnWidth(8, 30 * 200)
-            sheet.setColumnWidth(9, 30 * 200)
+            sheet.setColumnWidth(9, 20 * 400)
+            sheet.setColumnWidth(10, 30 * 200)
+            sheet.setColumnWidth(11, 30 * 200)
+            sheet.setColumnWidth(12, 30 * 200)
+            sheet.setColumnWidth(13, 30 * 200)
         }
 
         val filePath = File(externalMediaDirs[0], "SheeDemoIbpr${System.currentTimeMillis()}.xls")
