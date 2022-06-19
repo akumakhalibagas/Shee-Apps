@@ -284,6 +284,11 @@ class ShowGreenActivity : AppCompatActivity() {
             btnSave.setOnClickListener {
                 textfilter = etTglMulai.text.toString() + etTglEnd.text.toString() + etShift.text.toString() + etStatus.text.toString()
                 viewModel.getGreen(etTglMulai.text.toString(), etTglEnd.text.toString(), etShift.text.toString(), etStatus.text.toString())
+                dialogBottom.dismiss()
+            }
+
+            btnAll.setOnClickListener {
+                viewModel.getGreen("","","","")
             }
         }
         dialogBottom.show()

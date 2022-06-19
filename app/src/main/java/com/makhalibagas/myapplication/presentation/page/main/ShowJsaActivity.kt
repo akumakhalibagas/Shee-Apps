@@ -88,6 +88,7 @@ class ShowJsaActivity : AppCompatActivity() {
                     binding.apply {
                         btPdf.isEnabled = true
                         btExcel.isEnabled = true
+                        etFilter.isEnabled = true
                     }
                 }
                 is UiStateWrapper.Error -> {}
@@ -231,6 +232,11 @@ class ShowJsaActivity : AppCompatActivity() {
             btnSave.setOnClickListener {
                 textfilter = etTglMulai.text.toString() + etTglEnd.text.toString()
                 viewModel.getJsa(etTglMulai.text.toString(), etTglEnd.text.toString())
+                dialogBottom.dismiss()
+            }
+
+            btnAll.setOnClickListener {
+                viewModel.getJsa("","")
             }
         }
         dialogBottom.show()

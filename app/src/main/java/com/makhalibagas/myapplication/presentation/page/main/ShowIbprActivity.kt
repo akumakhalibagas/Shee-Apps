@@ -291,6 +291,11 @@ class ShowIbprActivity : AppCompatActivity() {
             btnSave.setOnClickListener {
                 textfilter = etTglMulai.text.toString() + etTglEnd.text.toString() + etShift.text.toString() + etStatus.text.toString()
                 viewModel.getIbpr(etTglMulai.text.toString(), etTglEnd.text.toString(), etShift.text.toString(), etStatus.text.toString())
+                dialogBottom.dismiss()
+            }
+
+            btnAll.setOnClickListener {
+                viewModel.getIbpr("","","","")
             }
         }
         dialogBottom.show()

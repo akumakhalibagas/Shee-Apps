@@ -84,4 +84,16 @@
         android:textColor="@android:color/white"
         tools:ignore="RtlSymmetry" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_all"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/purple_500"
+        android:paddingStart="6dp"
+        android:text="Show All"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        tools:ignore="RtlSymmetry" />
+
 </androidx.appcompat.widget.LinearLayoutCompat>

@@ -140,6 +140,7 @@
                 android:layout_marginHorizontal="6dp"
                 android:gravity="center"
                 android:text="Shift"
+                android:textColor="@color/black"
                 android:textStyle="bold"
                 android:textSize="12sp" />
 
@@ -150,15 +151,17 @@
                 android:gravity="center"
                 android:text="Site"
                 android:textStyle="bold"
+                android:textColor="@color/black"
                 android:textSize="12sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="60dp"
+                android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:gravity="center"
                 android:text="Departement"
                 android:textStyle="bold"
+                android:textColor="@color/black"
                 android:textSize="12sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
