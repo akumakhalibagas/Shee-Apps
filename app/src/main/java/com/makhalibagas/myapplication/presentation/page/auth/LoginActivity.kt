@@ -65,6 +65,7 @@ class LoginActivity : AppCompatActivity() {
                 is UiStateWrapper.Success -> {
                     if (state.data.status.equals("fail")){
                         Toast.makeText(this, "error atau username password salah", Toast.LENGTH_SHORT).show()
+                        binding.btnSave.isVisible = true
                     }else{
                         shareds.setUsers(Shareds.Key.users, state.data)
                         startActivity(Intent(this, MainActivity::class.java))
