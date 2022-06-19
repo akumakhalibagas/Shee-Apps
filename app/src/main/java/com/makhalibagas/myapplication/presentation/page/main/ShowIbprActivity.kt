@@ -3,20 +3,20 @@ package com.makhalibagas.myapplication.presentation.page.main
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.makhalibagas.myapplication.R
 import com.makhalibagas.myapplication.data.source.remote.response.IbprItem
 import com.makhalibagas.myapplication.databinding.ActivityShowIbprBinding
+import com.makhalibagas.myapplication.databinding.LayoutFilterBinding
 import com.makhalibagas.myapplication.presentation.page.adapter.ItemIbprAdapter
 import com.makhalibagas.myapplication.presentation.state.UiStateWrapper
-import com.makhalibagas.myapplication.utils.Datas
-import com.makhalibagas.myapplication.utils.PdfConverterIbpr
-import com.makhalibagas.myapplication.utils.collectLifecycleFlow
-import com.makhalibagas.myapplication.utils.viewBinding
+import com.makhalibagas.myapplication.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 import org.apache.poi.hssf.usermodel.HSSFWorkbook
 import org.apache.poi.ss.usermodel.Cell
@@ -25,6 +25,8 @@ import org.apache.poi.ss.usermodel.Sheet
 import org.apache.poi.ss.usermodel.Workbook
 import java.io.File
 import java.io.FileOutputStream
+import java.text.SimpleDateFormat
+import java.util.*
 
 @AndroidEntryPoint
 class ShowIbprActivity : AppCompatActivity() {
@@ -33,6 +35,7 @@ class ShowIbprActivity : AppCompatActivity() {
     private val viewModel: MainViewModel by viewModels()
     private lateinit var itemIbprAdapter: ItemIbprAdapter
     private lateinit var listIbpr: List<IbprItem>
+    private var textfilter : String = "All"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +47,8 @@ class ShowIbprActivity : AppCompatActivity() {
 
     private fun initView() {
         binding.apply {
-            itemIbprAdapter = ItemIbprAdapter()
+            etFilter.setText(textfilter)
+            itemIbprAdapter = ItemIbprAdapter(viewModel.getUsers()!!.tipeUser.equals("1"))
             included.rvIbpr.adapter = itemIbprAdapter
         }
     }
@@ -62,20 +66,9 @@ class ShowIbprActivity : AppCompatActivity() {
             }
 
             etFilter.apply {
-                setAdapter(
-                    ArrayAdapter(
-                        this@ShowIbprActivity,
-                        R.layout.item_dropdown,
-                        Datas.filter
-                    )
-                )
                 setOnTouchListener { _, _ ->
-                    showDropDown()
+                    showFilter()
                     return@setOnTouchListener false
-                }
-
-                doOnTextChanged { text, _, _, _ ->
-                    viewModel.queryIbprDebounced(text.toString())
                 }
             }
 
@@ -88,8 +81,7 @@ class ShowIbprActivity : AppCompatActivity() {
     }
 
     private fun initObserver() {
-        viewModel.getIbpr()
-        viewModel.queryIbprDebounced("All")
+        viewModel.getIbpr("","","","")
 
         collectLifecycleFlow(viewModel.ibpr) { state ->
             when (state) {
@@ -100,14 +92,11 @@ class ShowIbprActivity : AppCompatActivity() {
                         btExcel.isEnabled = true
                         etFilter.isEnabled = true
                     }
+                    listIbpr = state.data
+                    itemIbprAdapter.setData(listIbpr)
                 }
                 is UiStateWrapper.Error -> {}
             }
-        }
-
-        collectLifecycleFlow(viewModel.listIbpr){
-            listIbpr = it
-            itemIbprAdapter.setData(listIbpr)
         }
     }
 
@@ -225,5 +214,85 @@ class ShowIbprActivity : AppCompatActivity() {
         } catch (e: Exception) {
             e.printStackTrace()
         }
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private fun showFilter(){
+        val layoutDialog = LayoutFilterBinding.inflate(layoutInflater, null, false)
+        val dialogBottom = BottomSheetDialog(this)
+        dialogBottom.setContentView(layoutDialog.root)
+        layoutDialog.apply {
+            etTglMulai.apply {
+                onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
+                    if (hasFocus) {
+                        v?.showDatePicker {
+                            val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                            val dateSelected: String = dateFormat.format(it.time)
+                            etTglMulai.setText(dateSelected)
+                        }
+                    }
+                }
+                setOnClickListener {
+                    showDatePicker {
+                        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                        val dateSelected: String = dateFormat.format(it.time)
+                        etTglMulai.setText(dateSelected)
+                    }
+                }
+            }
+
+            etTglEnd.apply {
+                onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
+                    if (hasFocus) {
+                        v?.showDatePicker {
+                            val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                            val dateSelected: String = dateFormat.format(it.time)
+                            etTglEnd.setText(dateSelected)
+                        }
+                    }
+                }
+                setOnClickListener {
+                    showDatePicker {
+                        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                        val dateSelected: String = dateFormat.format(it.time)
+                        etTglEnd.setText(dateSelected)
+                    }
+                }
+            }
+
+            etShift.apply {
+                setAdapter(
+                    ArrayAdapter(
+                        this@ShowIbprActivity,
+                        R.layout.item_dropdown,
+                        Datas.shift
+                    )
+                )
+                setOnTouchListener { _, _ ->
+                    showDropDown()
+                    return@setOnTouchListener false
+                }
+            }
+
+            etStatus.apply {
+                setAdapter(
+                    ArrayAdapter(
+                        this@ShowIbprActivity,
+                        R.layout.item_dropdown,
+                        Datas.status
+                    )
+                )
+                setOnTouchListener { _, _ ->
+                    showDropDown()
+                    return@setOnTouchListener false
+                }
+            }
+
+            btnSave.setOnClickListener {
+                textfilter = etTglMulai.text.toString() + etTglEnd.text.toString() + etShift.text.toString() + etStatus.text.toString()
+                viewModel.getIbpr(etTglMulai.text.toString(), etTglEnd.text.toString(), etShift.text.toString(), etStatus.text.toString())
+            }
+        }
+        dialogBottom.show()
     }
 }

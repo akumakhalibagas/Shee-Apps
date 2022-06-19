@@ -14,10 +14,15 @@ import javax.inject.Singleton
 @Singleton
 class MainRemoteDataSource @Inject constructor(val apiService: AppApiService) {
 
-    fun getGreen(): Flow<AppApiResponse<List<GreenItem>>> =
+    fun getGreen(
+        startdate: String,
+        enddate: String,
+        shift: String,
+        status: String
+    ): Flow<AppApiResponse<List<GreenItem>>> =
         flow {
             try {
-                val response = apiService.getGreen()
+                val response = apiService.getGreen(startdate, enddate, shift, status)
                 if (response.isNotEmpty()) {
                     emit(AppApiResponse.Success(response))
                 } else {
@@ -29,20 +34,20 @@ class MainRemoteDataSource @Inject constructor(val apiService: AppApiService) {
         }.flowOn(Dispatchers.IO)
 
     fun delGreen(id: String): Flow<AppApiResponse<SheeResponse>> =
-      flow {
-          try {
-              val response = apiService.delGreen(id)
-              if (response.status.equals("success")) {
-                  emit(AppApiResponse.Success(response))
-              } else {
-                  emit(AppApiResponse.Error("error"))
-              }
-          } catch (e: Exception) {
-              emit(AppApiResponse.Error(e.message.toString()))
-          }
-      }.flowOn(Dispatchers.IO)
+        flow {
+            try {
+                val response = apiService.delGreen(id)
+                if (response.status.equals("success")) {
+                    emit(AppApiResponse.Success(response))
+                } else {
+                    emit(AppApiResponse.Error("error"))
+                }
+            } catch (e: Exception) {
+                emit(AppApiResponse.Error(e.message.toString()))
+            }
+        }.flowOn(Dispatchers.IO)
 
-    fun addGreen(green: GreenReq) : Flow<AppApiResponse<SheeResponse>> =
+    fun addGreen(green: GreenReq): Flow<AppApiResponse<SheeResponse>> =
         flow {
             try {
                 val response = apiService.addGreen(green)
@@ -56,7 +61,7 @@ class MainRemoteDataSource @Inject constructor(val apiService: AppApiService) {
             }
         }.flowOn(Dispatchers.IO)
 
-    fun editGreen(edit: EditGreenReq) : Flow<AppApiResponse<SheeResponse>> =
+    fun editGreen(edit: EditGreenReq): Flow<AppApiResponse<SheeResponse>> =
         flow {
             try {
                 val response = apiService.editGreen(edit)
@@ -70,10 +75,15 @@ class MainRemoteDataSource @Inject constructor(val apiService: AppApiService) {
             }
         }.flowOn(Dispatchers.IO)
 
-    fun getIbpr(): Flow<AppApiResponse<List<IbprItem>>> =
+    fun getIbpr(
+        startdate: String,
+        enddate: String,
+        shift: String,
+        status: String
+    ): Flow<AppApiResponse<List<IbprItem>>> =
         flow {
             try {
-                val response = apiService.getIbpr()
+                val response = apiService.getIbpr(startdate, enddate, shift, status)
                 if (response.isNotEmpty()) {
                     emit(AppApiResponse.Success(response))
                 } else {
@@ -98,7 +108,7 @@ class MainRemoteDataSource @Inject constructor(val apiService: AppApiService) {
             }
         }.flowOn(Dispatchers.IO)
 
-    fun addIbpr(ibpr: IbprReq) : Flow<AppApiResponse<SheeResponse>> =
+    fun addIbpr(ibpr: IbprReq): Flow<AppApiResponse<SheeResponse>> =
         flow {
             try {
                 val response = apiService.addIbpr(ibpr)
@@ -112,7 +122,7 @@ class MainRemoteDataSource @Inject constructor(val apiService: AppApiService) {
             }
         }.flowOn(Dispatchers.IO)
 
-    fun editIbpr(edit: EditIbprReq) : Flow<AppApiResponse<SheeResponse>> =
+    fun editIbpr(edit: EditIbprReq): Flow<AppApiResponse<SheeResponse>> =
         flow {
             try {
                 val response = apiService.editIbpr(edit)
@@ -126,10 +136,13 @@ class MainRemoteDataSource @Inject constructor(val apiService: AppApiService) {
             }
         }.flowOn(Dispatchers.IO)
 
-    fun getJsa(): Flow<AppApiResponse<List<JsaItem>>> =
+    fun getJsa(
+        startdate: String,
+        enddate: String
+    ): Flow<AppApiResponse<List<JsaItem>>> =
         flow {
             try {
-                val response = apiService.getJsa()
+                val response = apiService.getJsa(startdate, enddate)
                 if (response.isNotEmpty()) {
                     emit(AppApiResponse.Success(response))
                 } else {
@@ -154,7 +167,7 @@ class MainRemoteDataSource @Inject constructor(val apiService: AppApiService) {
             }
         }.flowOn(Dispatchers.IO)
 
-    fun addJsa(jsa: JsaReq) : Flow<AppApiResponse<SheeResponse>> =
+    fun addJsa(jsa: JsaReq): Flow<AppApiResponse<SheeResponse>> =
         flow {
             try {
                 val response = apiService.addJsa(jsa)
@@ -168,7 +181,7 @@ class MainRemoteDataSource @Inject constructor(val apiService: AppApiService) {
             }
         }.flowOn(Dispatchers.IO)
 
-    fun editJsa(edit: EditJsaReq) : Flow<AppApiResponse<SheeResponse>> =
+    fun editJsa(edit: EditJsaReq): Flow<AppApiResponse<SheeResponse>> =
         flow {
             try {
                 val response = apiService.editJsa(edit)

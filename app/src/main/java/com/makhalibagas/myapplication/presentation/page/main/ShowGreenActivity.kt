@@ -3,20 +3,20 @@ package com.makhalibagas.myapplication.presentation.page.main
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.makhalibagas.myapplication.R
 import com.makhalibagas.myapplication.data.source.remote.response.GreenItem
 import com.makhalibagas.myapplication.databinding.ActivityShowGreenBinding
+import com.makhalibagas.myapplication.databinding.LayoutFilterBinding
 import com.makhalibagas.myapplication.presentation.page.adapter.ItemGreenAdapter
 import com.makhalibagas.myapplication.presentation.state.UiStateWrapper
-import com.makhalibagas.myapplication.utils.Datas
-import com.makhalibagas.myapplication.utils.PDFConverter
-import com.makhalibagas.myapplication.utils.collectLifecycleFlow
-import com.makhalibagas.myapplication.utils.viewBinding
+import com.makhalibagas.myapplication.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 import org.apache.poi.hssf.usermodel.HSSFWorkbook
 import org.apache.poi.ss.usermodel.Cell
@@ -25,6 +25,8 @@ import org.apache.poi.ss.usermodel.Sheet
 import org.apache.poi.ss.usermodel.Workbook
 import java.io.File
 import java.io.FileOutputStream
+import java.text.SimpleDateFormat
+import java.util.*
 
 @AndroidEntryPoint
 class ShowGreenActivity : AppCompatActivity() {
@@ -32,6 +34,7 @@ class ShowGreenActivity : AppCompatActivity() {
     private val viewModel: MainViewModel by viewModels()
     private lateinit var itemGreenAdapter: ItemGreenAdapter
     private lateinit var list: List<GreenItem>
+    private var textfilter : String = "All"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +46,8 @@ class ShowGreenActivity : AppCompatActivity() {
 
     private fun initView() {
         binding.apply {
-            itemGreenAdapter = ItemGreenAdapter()
+            etFilter.setText(textfilter)
+            itemGreenAdapter = ItemGreenAdapter(viewModel.getUsers()!!.tipeUser.equals("1"))
             included.rvGreen.adapter = itemGreenAdapter
         }
     }
@@ -61,20 +65,9 @@ class ShowGreenActivity : AppCompatActivity() {
             }
 
             etFilter.apply {
-                setAdapter(
-                    ArrayAdapter(
-                        this@ShowGreenActivity,
-                        R.layout.item_dropdown,
-                        Datas.filter
-                    )
-                )
                 setOnTouchListener { _, _ ->
-                    showDropDown()
+                    showFilter()
                     return@setOnTouchListener false
-                }
-
-                doOnTextChanged { text, _, _, _ ->
-                    viewModel.queryGreenDebounced(text.toString())
                 }
             }
 
@@ -87,8 +80,7 @@ class ShowGreenActivity : AppCompatActivity() {
     }
 
     private fun initObserver() {
-        viewModel.getGreen()
-        viewModel.queryGreenDebounced("All")
+        viewModel.getGreen("","","","")
 
         collectLifecycleFlow(viewModel.green) { state ->
             when (state) {
@@ -99,14 +91,11 @@ class ShowGreenActivity : AppCompatActivity() {
                         btExcel.isEnabled = true
                         etFilter.isEnabled = true
                     }
+                    list = state.data
+                    itemGreenAdapter.setData(list)
                 }
                 is UiStateWrapper.Error -> {}
             }
-        }
-
-        collectLifecycleFlow(viewModel.listGreen){
-            list = it
-            itemGreenAdapter.setData(list)
         }
     }
 
@@ -218,5 +207,85 @@ class ShowGreenActivity : AppCompatActivity() {
         } catch (e: Exception) {
             e.printStackTrace()
         }
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private fun showFilter(){
+        val layoutDialog = LayoutFilterBinding.inflate(layoutInflater, null, false)
+        val dialogBottom = BottomSheetDialog(this)
+        dialogBottom.setContentView(layoutDialog.root)
+        layoutDialog.apply {
+            etTglMulai.apply {
+                onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
+                    if (hasFocus) {
+                        v?.showDatePicker {
+                            val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                            val dateSelected: String = dateFormat.format(it.time)
+                            etTglMulai.setText(dateSelected)
+                        }
+                    }
+                }
+                setOnClickListener {
+                    showDatePicker {
+                        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                        val dateSelected: String = dateFormat.format(it.time)
+                        etTglMulai.setText(dateSelected)
+                    }
+                }
+            }
+
+            etTglEnd.apply {
+                onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
+                    if (hasFocus) {
+                        v?.showDatePicker {
+                            val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                            val dateSelected: String = dateFormat.format(it.time)
+                            etTglEnd.setText(dateSelected)
+                        }
+                    }
+                }
+                setOnClickListener {
+                    showDatePicker {
+                        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                        val dateSelected: String = dateFormat.format(it.time)
+                        etTglEnd.setText(dateSelected)
+                    }
+                }
+            }
+
+            etShift.apply {
+                setAdapter(
+                    ArrayAdapter(
+                        this@ShowGreenActivity,
+                        R.layout.item_dropdown,
+                        Datas.shift
+                    )
+                )
+                setOnTouchListener { _, _ ->
+                    showDropDown()
+                    return@setOnTouchListener false
+                }
+            }
+
+            etStatus.apply {
+                setAdapter(
+                    ArrayAdapter(
+                        this@ShowGreenActivity,
+                        R.layout.item_dropdown,
+                        Datas.status
+                    )
+                )
+                setOnTouchListener { _, _ ->
+                    showDropDown()
+                    return@setOnTouchListener false
+                }
+            }
+
+            btnSave.setOnClickListener {
+                textfilter = etTglMulai.text.toString() + etTglEnd.text.toString() + etShift.text.toString() + etStatus.text.toString()
+                viewModel.getGreen(etTglMulai.text.toString(), etTglEnd.text.toString(), etShift.text.toString(), etStatus.text.toString())
+            }
+        }
+        dialogBottom.show()
     }
 }

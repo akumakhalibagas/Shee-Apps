@@ -63,9 +63,13 @@ class LoginActivity : AppCompatActivity() {
                     }
                 }
                 is UiStateWrapper.Success -> {
-                    shareds.setUsers(Shareds.Key.users, state.data)
-                    startActivity(Intent(this, MainActivity::class.java))
-                    finishAffinity()
+                    if (state.data.status.equals("fail")){
+                        Toast.makeText(this, "error atau username password salah", Toast.LENGTH_SHORT).show()
+                    }else{
+                        shareds.setUsers(Shareds.Key.users, state.data)
+                        startActivity(Intent(this, MainActivity::class.java))
+                        finishAffinity()
+                    }
                 }
                 is UiStateWrapper.Error -> {
                     Toast.makeText(this, "error atau username password salah", Toast.LENGTH_SHORT).show()

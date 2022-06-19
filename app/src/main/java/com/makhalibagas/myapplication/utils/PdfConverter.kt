@@ -98,7 +98,7 @@ class PDFConverter {
         val inflater = LayoutInflater.from(context)
         val view = inflater.inflate(R.layout.layout_pdf_green, null)
 
-        val adapter = ItemGreenAdapter()
+        val adapter = ItemGreenAdapter(true)
         adapter.setData(list)
         val bitmap = createBitmapFromView(context, view, adapter, activity)
         convertBitmapToPdf(bitmap,context)

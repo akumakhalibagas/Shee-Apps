@@ -60,8 +60,8 @@ class AdminActivity : AppCompatActivity() {
     }
 
     private fun initObserver() {
-        viewModel.getGreen()
-        viewModel.getIbpr()
+        viewModel.getGreen("","","","")
+        viewModel.getIbpr("","","","")
         collectLifecycleFlow(viewModel.green) { state ->
             when (state) {
                 is UiStateWrapper.Loading -> {}

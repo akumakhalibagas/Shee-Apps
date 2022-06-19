@@ -85,7 +85,7 @@ class PdfConverterJsa {
         val inflater = LayoutInflater.from(context)
         val view = inflater.inflate(R.layout.layout_pdf_jsa, null)
 
-        val adapter = ItemJsaAdapter()
+        val adapter = ItemJsaAdapter(true)
         adapter.setData(list)
         val bitmap = createBitmapFromView(context, view, adapter, activity)
         convertBitmapToPdf(bitmap, activity)

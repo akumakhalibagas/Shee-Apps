@@ -85,7 +85,7 @@ class PdfConverterIbpr {
         val inflater = LayoutInflater.from(context)
         val view = inflater.inflate(R.layout.layout_pdf_ibpr, null)
 
-        val adapter = ItemIbprAdapter()
+        val adapter = ItemIbprAdapter(true)
         adapter.setData(list)
         val bitmap = createBitmapFromView(context, view, adapter, activity)
         convertBitmapToPdf(bitmap, activity)

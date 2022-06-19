@@ -20,7 +20,12 @@ interface AppApiService {
     //Green
 
     @GET("green")
-    suspend fun getGreen(): List<GreenItem>
+    suspend fun getGreen(
+        @Query("startdate") startdate: String,
+        @Query("enddate") enddate: String,
+        @Query("shift") shift: String,
+        @Query("status") status: String
+        ): List<GreenItem>
 
     @DELETE("green")
     suspend fun delGreen(
@@ -40,7 +45,12 @@ interface AppApiService {
     //IBPR
 
     @GET("ibpr")
-    suspend fun getIbpr(): List<IbprItem>
+    suspend fun getIbpr(
+        @Query("startdate") startdate: String,
+        @Query("enddate") enddate: String,
+        @Query("shift") shift: String,
+        @Query("status") status: String
+    ): List<IbprItem>
 
     @DELETE("ibpr")
     suspend fun delIbpr(
@@ -60,7 +70,10 @@ interface AppApiService {
     //Jsa
 
     @GET("jsa")
-    suspend fun getJsa(): List<JsaItem>
+    suspend fun getJsa(
+        @Query("startdate") startdate: String,
+        @Query("enddate") enddate: String
+    ): List<JsaItem>
 
     @DELETE("jsa")
     suspend fun delJsa(

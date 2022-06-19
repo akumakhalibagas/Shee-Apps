@@ -7,15 +7,28 @@ import kotlinx.coroutines.flow.Flow
 
 interface IMainRepository {
 
-    fun getGreen(): Flow<Resource<List<GreenItem>>>
+    fun getGreen(
+        startdate: String,
+        enddate: String,
+        shift: String,
+        status: String
+    ): Flow<Resource<List<GreenItem>>>
     fun delGreen(id: String): Flow<Resource<SheeResponse>>
     fun addGreen(green: GreenReq) : Flow<Resource<SheeResponse>>
     fun editGreen(edit: EditGreenReq) : Flow<Resource<SheeResponse>>
-    fun getIbpr(): Flow<Resource<List<IbprItem>>>
+    fun getIbpr(
+        startdate: String,
+        enddate: String,
+        shift: String,
+        status: String
+    ): Flow<Resource<List<IbprItem>>>
     fun delIbpr(id: String): Flow<Resource<SheeResponse>>
     fun addIbpr(ibpr: IbprReq) : Flow<Resource<SheeResponse>>
     fun editIbpr(edit: EditIbprReq) : Flow<Resource<SheeResponse>>
-    fun getJsa(): Flow<Resource<List<JsaItem>>>
+    fun getJsa(
+        startdate: String,
+        enddate: String
+    ): Flow<Resource<List<JsaItem>>>
     fun delJsa(id: String): Flow<Resource<SheeResponse>>
     fun addJsa(jsa: JsaReq) : Flow<Resource<SheeResponse>>
     fun editJsa(edit: EditJsaReq) : Flow<Resource<SheeResponse>>

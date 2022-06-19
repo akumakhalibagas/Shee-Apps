@@ -17,5 +17,8 @@ data class Users(
 	val id: String? = null,
 
 	@field:SerializedName("username")
-	val username: String? = null
+	val username: String? = null,
+
+	@field:SerializedName("status")
+	val status: String? = null
 ) : Parcelable

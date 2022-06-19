@@ -7,6 +7,7 @@ import com.makhalibagas.myapplication.data.source.remote.request.*
 import com.makhalibagas.myapplication.data.source.remote.response.*
 import com.makhalibagas.myapplication.domain.repository.IMainRepository
 import com.makhalibagas.myapplication.presentation.state.UiStateWrapper
+import com.makhalibagas.myapplication.utils.Shareds
 import com.makhalibagas.myapplication.utils.collectLifecycleFlow
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
@@ -19,7 +20,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(val repository: IMainRepository) : ViewModel() {
+class MainViewModel @Inject constructor(val repository: IMainRepository, val shareds: Shareds) : ViewModel() {
 
     private var queryGreen : Job? = null
     private var _allGreenList = emptyList<GreenItem>()
@@ -73,6 +74,7 @@ class MainViewModel @Inject constructor(val repository: IMainRepository) : ViewM
     private val _ibprMon = MutableSharedFlow<UiStateWrapper<MonitoringItem>>()
     val ibprMon = _ibprMon.asSharedFlow()
 
+    fun getUsers() : Users? = shareds.users
 
     fun getMonGreen() {
         collectLifecycleFlow(repository.getMonGreen()) { resource ->
@@ -142,8 +144,13 @@ class MainViewModel @Inject constructor(val repository: IMainRepository) : ViewM
         }
     }
 
-    fun getGreen() {
-        collectLifecycleFlow(repository.getGreen()) { resource ->
+    fun getGreen(
+        startdate: String,
+        enddate: String,
+        shift: String,
+        status: String
+    ) {
+        collectLifecycleFlow(repository.getGreen(startdate, enddate, shift, status)) { resource ->
             when (resource) {
                 is Resource.Loading -> {
                     _green.emit(UiStateWrapper.Loading(true))
@@ -211,8 +218,13 @@ class MainViewModel @Inject constructor(val repository: IMainRepository) : ViewM
         }
     }
 
-    fun getIbpr() {
-        collectLifecycleFlow(repository.getIbpr()) { resource ->
+    fun getIbpr(
+        startdate: String,
+        enddate: String,
+        shift: String,
+        status: String
+    ) {
+        collectLifecycleFlow(repository.getIbpr(startdate, enddate, shift, status)) { resource ->
             when (resource) {
                 is Resource.Loading -> {
                     _ibpr.emit(UiStateWrapper.Loading(true))
@@ -280,8 +292,11 @@ class MainViewModel @Inject constructor(val repository: IMainRepository) : ViewM
         }
     }
 
-    fun getJsa() {
-        collectLifecycleFlow(repository.getJsa()) { resource ->
+    fun getJsa(
+        startdate: String,
+        enddate: String
+    ) {
+        collectLifecycleFlow(repository.getJsa(startdate, enddate)) { resource ->
             when (resource) {
                 is Resource.Loading -> {
                     _jsa.emit(UiStateWrapper.Loading(true))

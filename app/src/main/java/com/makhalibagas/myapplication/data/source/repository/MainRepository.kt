@@ -15,11 +15,16 @@ import javax.inject.Singleton
 @Singleton
 class MainRepository @Inject constructor(val remoteDataSource: MainRemoteDataSource) : IMainRepository{
 
-    override fun getGreen(): Flow<Resource<List<GreenItem>>> =
+    override fun getGreen(
+        startdate: String,
+        enddate: String,
+        shift: String,
+        status: String
+    ): Flow<Resource<List<GreenItem>>> =
         flow {
             emit(Resource.Loading)
             when (val apiResource =
-                remoteDataSource.getGreen().first()) {
+                remoteDataSource.getGreen(startdate, enddate, shift, status).first()) {
                 is AppApiResponse.Success -> {
                     emit(Resource.Success(apiResource.data))
                 }
@@ -71,11 +76,16 @@ class MainRepository @Inject constructor(val remoteDataSource: MainRemoteDataSou
             }
         }
 
-    override fun getIbpr(): Flow<Resource<List<IbprItem>>> =
+    override fun getIbpr(
+        startdate: String,
+        enddate: String,
+        shift: String,
+        status: String
+    ): Flow<Resource<List<IbprItem>>> =
         flow {
             emit(Resource.Loading)
             when (val apiResource =
-                remoteDataSource.getIbpr().first()) {
+                remoteDataSource.getIbpr(startdate, enddate, shift, status).first()) {
                 is AppApiResponse.Success -> {
                     emit(Resource.Success(apiResource.data))
                 }
@@ -125,11 +135,14 @@ class MainRepository @Inject constructor(val remoteDataSource: MainRemoteDataSou
             }
         }
 
-    override fun getJsa(): Flow<Resource<List<JsaItem>>> =
+    override fun getJsa(
+        startdate: String,
+        enddate: String
+    ): Flow<Resource<List<JsaItem>>> =
         flow {
             emit(Resource.Loading)
             when (val apiResource =
-                remoteDataSource.getJsa().first()) {
+                remoteDataSource.getJsa(startdate, enddate).first()) {
                 is AppApiResponse.Success -> {
                     emit(Resource.Success(apiResource.data))
                 }

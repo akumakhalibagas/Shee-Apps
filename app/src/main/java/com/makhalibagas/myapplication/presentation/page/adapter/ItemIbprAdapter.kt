@@ -7,7 +7,7 @@ import com.makhalibagas.myapplication.data.source.remote.response.IbprItem
 import com.makhalibagas.myapplication.databinding.ItemIbprBinding
 import com.makhalibagas.myapplication.utils.changeDateFormat
 
-class ItemIbprAdapter : RecyclerView.Adapter<ItemIbprAdapter.ViewHolder>() {
+class ItemIbprAdapter(val isHead: Boolean) : RecyclerView.Adapter<ItemIbprAdapter.ViewHolder>() {
 
     val listData = ArrayList<IbprItem>()
     var onItemClick: ((IbprItem) -> Unit)? = null
@@ -51,7 +51,11 @@ class ItemIbprAdapter : RecyclerView.Adapter<ItemIbprAdapter.ViewHolder>() {
                 tvShift.text = data.shift
                 tvSite.text = data.site
                 tvDp.text = data.department
-                root.setOnClickListener { onItemClick!!.invoke(data) }
+                root.setOnClickListener {
+                    if (!isHead){
+                        onItemClick!!.invoke(data)
+                    }
+                }
             }
         }
     }

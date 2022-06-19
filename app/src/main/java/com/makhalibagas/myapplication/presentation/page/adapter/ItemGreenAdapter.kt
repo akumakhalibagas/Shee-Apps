@@ -7,7 +7,7 @@ import com.makhalibagas.myapplication.data.source.remote.response.GreenItem
 import com.makhalibagas.myapplication.databinding.ItemGreenBinding
 import com.makhalibagas.myapplication.utils.changeDateFormat
 
-class ItemGreenAdapter : RecyclerView.Adapter<ItemGreenAdapter.ViewHolder>() {
+class ItemGreenAdapter(val isHead: Boolean) : RecyclerView.Adapter<ItemGreenAdapter.ViewHolder>() {
 
     val listData = ArrayList<GreenItem>()
     var onItemClick: ((GreenItem) -> Unit)? = null
@@ -51,7 +51,11 @@ class ItemGreenAdapter : RecyclerView.Adapter<ItemGreenAdapter.ViewHolder>() {
                 tvShift.text = data.shift
                 tvSite.text = data.site
                 tvDp.text = data.department
-                root.setOnClickListener { onItemClick!!.invoke(data) }
+                root.setOnClickListener {
+                    if (!isHead){
+                        onItemClick!!.invoke(data)
+                    }
+                }
             }
         }
     }

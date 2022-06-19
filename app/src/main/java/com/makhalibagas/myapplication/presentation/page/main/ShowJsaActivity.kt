@@ -3,16 +3,17 @@ package com.makhalibagas.myapplication.presentation.page.main
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.makhalibagas.myapplication.data.source.remote.response.JsaItem
 import com.makhalibagas.myapplication.databinding.ActivityShowJsaBinding
+import com.makhalibagas.myapplication.databinding.LayoutFilterBinding
 import com.makhalibagas.myapplication.presentation.page.adapter.ItemJsaAdapter
 import com.makhalibagas.myapplication.presentation.state.UiStateWrapper
-import com.makhalibagas.myapplication.utils.PdfConverterJsa
-import com.makhalibagas.myapplication.utils.collectLifecycleFlow
-import com.makhalibagas.myapplication.utils.viewBinding
+import com.makhalibagas.myapplication.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 import org.apache.poi.hssf.usermodel.HSSFWorkbook
 import org.apache.poi.ss.usermodel.Cell
@@ -21,6 +22,8 @@ import org.apache.poi.ss.usermodel.Sheet
 import org.apache.poi.ss.usermodel.Workbook
 import java.io.File
 import java.io.FileOutputStream
+import java.text.SimpleDateFormat
+import java.util.*
 
 @AndroidEntryPoint
 class ShowJsaActivity : AppCompatActivity() {
@@ -28,6 +31,7 @@ class ShowJsaActivity : AppCompatActivity() {
     private val viewModel: MainViewModel by viewModels()
     private lateinit var itemJsaAdapter: ItemJsaAdapter
     private lateinit var list: List<JsaItem>
+    private var textfilter : String = "All"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +43,8 @@ class ShowJsaActivity : AppCompatActivity() {
 
     private fun initView() {
         binding.apply {
-            itemJsaAdapter = ItemJsaAdapter()
+            etFilter.setText(textfilter)
+            itemJsaAdapter = ItemJsaAdapter(viewModel.getUsers()!!.tipeUser.equals("1"))
             included.rvJsa.adapter = itemJsaAdapter
         }
     }
@@ -56,6 +61,13 @@ class ShowJsaActivity : AppCompatActivity() {
                 createExcelJsaFile()
             }
 
+            etFilter.apply {
+                setOnTouchListener { _, _ ->
+                    showFilter()
+                    return@setOnTouchListener false
+                }
+            }
+
             itemJsaAdapter.onItemClick = { data ->
                 val intent = Intent(this@ShowJsaActivity, JsaActivity::class.java)
                 intent.putExtra("jsa", data)
@@ -65,7 +77,7 @@ class ShowJsaActivity : AppCompatActivity() {
     }
 
     private fun initObserver() {
-        viewModel.getJsa()
+        viewModel.getJsa("","")
 
         collectLifecycleFlow(viewModel.jsa) { state ->
             when (state) {
@@ -167,5 +179,60 @@ class ShowJsaActivity : AppCompatActivity() {
         } catch (e: Exception) {
             e.printStackTrace()
         }
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private fun showFilter(){
+        val layoutDialog = LayoutFilterBinding.inflate(layoutInflater, null, false)
+        val dialogBottom = BottomSheetDialog(this)
+        dialogBottom.setContentView(layoutDialog.root)
+        layoutDialog.apply {
+            etTglMulai.apply {
+                onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
+                    if (hasFocus) {
+                        v?.showDatePicker {
+                            val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                            val dateSelected: String = dateFormat.format(it.time)
+                            etTglMulai.setText(dateSelected)
+                        }
+                    }
+                }
+                setOnClickListener {
+                    showDatePicker {
+                        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                        val dateSelected: String = dateFormat.format(it.time)
+                        etTglMulai.setText(dateSelected)
+                    }
+                }
+            }
+
+            etTglEnd.apply {
+                onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
+                    if (hasFocus) {
+                        v?.showDatePicker {
+                            val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                            val dateSelected: String = dateFormat.format(it.time)
+                            etTglEnd.setText(dateSelected)
+                        }
+                    }
+                }
+                setOnClickListener {
+                    showDatePicker {
+                        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                        val dateSelected: String = dateFormat.format(it.time)
+                        etTglEnd.setText(dateSelected)
+                    }
+                }
+            }
+
+            etShift.visibility = View.GONE
+            etStatus.visibility = View.GONE
+
+            btnSave.setOnClickListener {
+                textfilter = etTglMulai.text.toString() + etTglEnd.text.toString()
+                viewModel.getJsa(etTglMulai.text.toString(), etTglEnd.text.toString())
+            }
+        }
+        dialogBottom.show()
     }
 }

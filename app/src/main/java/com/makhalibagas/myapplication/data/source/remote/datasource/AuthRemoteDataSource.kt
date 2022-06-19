@@ -25,7 +25,7 @@ class AuthRemoteDataSource @Inject constructor(val apiService: AppApiService){
                 if (response.status.equals("success")) {
                     emit(AppApiResponse.Success(response))
                 } else {
-                    emit(AppApiResponse.Error("error"))
+                    emit(AppApiResponse.Success(response))
                 }
             } catch (e: Exception) {
                 emit(AppApiResponse.Error(e.message.toString()))
@@ -36,11 +36,7 @@ class AuthRemoteDataSource @Inject constructor(val apiService: AppApiService){
         flow {
             try {
                 val response = apiService.login(loginReq)
-                if (response.id!!.isNotEmpty()) {
-                    emit(AppApiResponse.Success(response))
-                } else {
-                    emit(AppApiResponse.Error("Data Kosong"))
-                }
+                emit(AppApiResponse.Success(response))
             } catch (e: Exception) {
                 emit(AppApiResponse.Error(e.message.toString()))
             }

@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.makhalibagas.myapplication.data.source.remote.response.JsaItem
 import com.makhalibagas.myapplication.databinding.ItemJsaBinding
 
-class ItemJsaAdapter : RecyclerView.Adapter<ItemJsaAdapter.ViewHolder>() {
+class ItemJsaAdapter(val isHead: Boolean) : RecyclerView.Adapter<ItemJsaAdapter.ViewHolder>() {
 
     val listData = ArrayList<JsaItem>()
     var onItemClick: ((JsaItem) -> Unit)? = null
@@ -47,7 +47,11 @@ class ItemJsaAdapter : RecyclerView.Adapter<ItemJsaAdapter.ViewHolder>() {
                 tvTanggungJwb.text = data.tanggungJawab
                 tvBahaya.text = data.bahaya
                 tvSupervisor.text = data.supervisor
-                root.setOnClickListener { onItemClick!!.invoke(data) }
+                root.setOnClickListener {
+                    if (!isHead){
+                        onItemClick!!.invoke(data)
+                    }
+                }
             }
         }
     }

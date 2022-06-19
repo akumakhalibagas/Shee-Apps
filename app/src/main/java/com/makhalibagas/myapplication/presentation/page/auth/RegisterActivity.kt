@@ -83,8 +83,12 @@ class RegisterActivity : AppCompatActivity() {
                         loading.isVisible = false
                         btnSave.isVisible = true
                     }
-                    startActivity(Intent(this, LoginActivity::class.java))
-                    finishAffinity()
+                    if (state.data.status.equals("fail")){
+                        Toast.makeText(this, "error atau username sudah ada", Toast.LENGTH_SHORT).show()
+                    }else{
+                        startActivity(Intent(this, LoginActivity::class.java))
+                        finishAffinity()
+                    }
                 }
                 is UiStateWrapper.Error -> {
                     Toast.makeText(this, "error atau username sudah ada", Toast.LENGTH_SHORT).show()

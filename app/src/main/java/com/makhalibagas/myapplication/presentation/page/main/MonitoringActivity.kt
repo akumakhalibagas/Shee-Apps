@@ -31,9 +31,9 @@ class MonitoringActivity : AppCompatActivity() {
                     is UiStateWrapper.Loading -> {}
                     is UiStateWrapper.Success -> {
                         binding.apply {
-                            tvOpen.text = "Open\n${state.data.persenOpen}"
-                            tvClose.text = "Close\n${state.data.persenClose}"
-                            tvContinue.text = "Continue\n${state.data.persenContinue}"
+                            tvOpen.text = "Open\n${state.data.persenOpen}%"
+                            tvClose.text = "Close\n${state.data.persenClose}%"
+                            tvContinue.text = "Continue\n${state.data.persenContinue}%"
                         }
                     }
                     is UiStateWrapper.Error -> {}
@@ -47,9 +47,9 @@ class MonitoringActivity : AppCompatActivity() {
                     is UiStateWrapper.Loading -> {}
                     is UiStateWrapper.Success -> {
                         binding.apply {
-                            tvOpen.text = "Open\n${state.data.persenOpen}"
-                            tvClose.text = "Close\n${state.data.persenClose}"
-                            tvContinue.text = "Continue\n${state.data.persenContinue}"
+                            tvOpen.text = "Open\n${state.data.persenOpen}%"
+                            tvClose.text = "Close\n${state.data.persenClose}%"
+                            tvContinue.text = "Continue\n${state.data.persenContinue}%"
                         }
                     }
                     is UiStateWrapper.Error -> {}
