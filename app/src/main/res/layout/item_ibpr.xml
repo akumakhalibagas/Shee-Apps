@@ -4,23 +4,17 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.3dp"
-        android:background="@android:color/darker_gray" />
-
     <TableLayout
         android:id="@+id/tl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center">
+        android:background="@drawable/bg_table"
+        android:showDividers="middle">
 
-        <TableRow android:gravity="center">
-
-            <View
-                android:layout_width="0.3dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray" />
+        <TableRow
+            android:divider="@color/black"
+            android:gravity="center_vertical"
+            android:showDividers="middle">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_no"
@@ -31,11 +25,6 @@
                 android:text="1"
                 android:textSize="12sp" />
 
-            <View
-                android:layout_width="0.3dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray" />
-
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_date"
                 android:layout_width="50dp"
@@ -44,11 +33,6 @@
                 android:gravity="start"
                 android:text="1 May 2022"
                 android:textSize="12sp" />
-
-            <View
-                android:layout_width="0.3dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_jam"
@@ -59,11 +43,6 @@
                 android:text="18.00"
                 android:textSize="12sp" />
 
-            <View
-                android:layout_width="0.3dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray" />
-
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_lokasi"
                 android:layout_width="60dp"
@@ -72,11 +51,6 @@
                 android:gravity="start"
                 android:text="Bangsa"
                 android:textSize="12sp" />
-
-            <View
-                android:layout_width="0.3dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_resiko"
@@ -87,24 +61,14 @@
                 android:text="Close"
                 android:textSize="12sp" />
 
-            <View
-                android:layout_width="0.3dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray" />
-
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_kode_bahaya"
-                android:layout_width="50dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:gravity="start"
                 android:text="Green"
                 android:textSize="12sp" />
-
-            <View
-                android:layout_width="0.3dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_status"
@@ -114,11 +78,6 @@
                 android:gravity="start"
                 android:text="Close"
                 android:textSize="12sp" />
-
-            <View
-                android:layout_width="0.3dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_temuan"
@@ -130,11 +89,6 @@
                 android:text="Bagus"
                 android:textSize="12sp" />
 
-            <View
-                android:layout_width="0.3dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray" />
-
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_shift"
                 android:layout_width="50dp"
@@ -143,11 +97,6 @@
                 android:gravity="start"
                 android:text="Malam"
                 android:textSize="12sp" />
-
-            <View
-                android:layout_width="0.3dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_site"
@@ -158,11 +107,6 @@
                 android:text="PMSS"
                 android:textSize="12sp" />
 
-            <View
-                android:layout_width="0.3dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray" />
-
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_dp"
                 android:layout_width="75dp"
@@ -171,11 +115,6 @@
                 android:gravity="start"
                 android:text="PT Mantap Jaya"
                 android:textSize="12sp" />
-
-            <View
-                android:layout_width="0.3dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_bahaya"
@@ -187,11 +126,6 @@
                 android:text="Harus lebih bagus"
                 android:textSize="12sp" />
 
-            <View
-                android:layout_width="0.3dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray" />
-
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_pengendalian"
                 android:layout_width="160dp"
@@ -202,16 +136,8 @@
                 android:text="Bagas"
                 android:textSize="12sp" />
 
-            <View
-                android:layout_width="0.3dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray" />
         </TableRow>
-    </TableLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.3dp"
-        android:background="@android:color/darker_gray" />
+    </TableLayout>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

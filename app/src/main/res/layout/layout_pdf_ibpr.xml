@@ -28,32 +28,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/bss" />
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="match_parent"
-        android:layout_height="0.3dp"
-        android:layout_marginTop="10dp"
-        android:background="@android:color/darker_gray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bss" />
-
     <TableLayout
         android:id="@+id/tl"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="#FFFFFF"
         android:gravity="center"
+        android:background="@drawable/bg_table"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view">
+        app:layout_constraintTop_toBottomOf="@id/bss">
 
         <TableRow android:gravity="center">
-
-            <View
-                android:layout_width="0.3dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="30dp"
@@ -64,11 +49,6 @@
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
-            <View
-                android:layout_width="0.3dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray" />
-
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
@@ -77,11 +57,6 @@
                 android:text="Date"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
-
-            <View
-                android:layout_width="0.3dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="50dp"
@@ -92,11 +67,6 @@
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
-            <View
-                android:layout_width="0.3dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray" />
-
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
@@ -105,11 +75,6 @@
                 android:text="Lokasi"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
-
-            <View
-                android:layout_width="0.3dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="50dp"
@@ -120,24 +85,14 @@
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
-            <View
-                android:layout_width="0.3dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray" />
-
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="50dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:gravity="start"
                 android:text="Kode Bahaya"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
-
-            <View
-                android:layout_width="0.3dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="50dp"
@@ -147,11 +102,6 @@
                 android:text="Status"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
-
-            <View
-                android:layout_width="0.3dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="150dp"
@@ -163,11 +113,6 @@
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
-            <View
-                android:layout_width="0.3dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray" />
-
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
@@ -176,11 +121,6 @@
                 android:text="Shift"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
-
-            <View
-                android:layout_width="0.3dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="50dp"
@@ -191,11 +131,6 @@
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
-            <View
-                android:layout_width="0.3dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray" />
-
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
@@ -204,11 +139,6 @@
                 android:text="Departement"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
-
-            <View
-                android:layout_width="0.3dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="150dp"
@@ -220,11 +150,6 @@
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
-            <View
-                android:layout_width="0.3dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray" />
-
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
@@ -235,22 +160,9 @@
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
-            <View
-                android:layout_width="0.3dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray" />
         </TableRow>
-    </TableLayout>
 
-    <View
-        android:id="@+id/view1"
-        android:layout_width="match_parent"
-        android:layout_height="0.3dp"
-        android:layout_marginTop="10dp"
-        android:background="@android:color/darker_gray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tl" />
+    </TableLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_ibpr"
@@ -262,14 +174,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tl"
         tools:listitem="@layout/item_ibpr" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.3dp"
-        android:background="@android:color/darker_gray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rv_ibpr" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

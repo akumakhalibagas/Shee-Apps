@@ -4,23 +4,17 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.3dp"
-        android:background="@android:color/darker_gray" />
-
     <TableLayout
         android:id="@+id/tl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center">
+        android:background="@drawable/bg_table"
+        android:showDividers="middle">
 
-        <TableRow android:gravity="center">
-
-            <View
-                android:layout_width="0.3dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray" />
+        <TableRow
+            android:divider="@color/black"
+            android:gravity="center_vertical"
+            android:showDividers="middle">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_no"
@@ -31,11 +25,6 @@
                 android:text="1"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
-
-            <View
-                android:layout_width="0.3dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_pekerja"
@@ -48,11 +37,6 @@
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
-            <View
-                android:layout_width="0.3dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray" />
-
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_departemen"
                 android:layout_width="120dp"
@@ -63,11 +47,6 @@
                 android:text="Departemen"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
-
-            <View
-                android:layout_width="0.3dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_bahaya"
@@ -80,11 +59,6 @@
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
-            <View
-                android:layout_width="0.3dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray" />
-
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_supervisor"
                 android:layout_width="85dp"
@@ -95,11 +69,6 @@
                 android:text="Bagas Makhali"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
-
-            <View
-                android:layout_width="0.3dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_perusahaan"
@@ -112,11 +81,6 @@
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
-            <View
-                android:layout_width="0.3dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray" />
-
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_potensi"
                 android:layout_width="150dp"
@@ -127,11 +91,6 @@
                 android:text="Potensi Bahaya"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
-
-            <View
-                android:layout_width="0.3dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_upaya"
@@ -144,11 +103,6 @@
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
-            <View
-                android:layout_width="0.3dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray" />
-
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_tanggung_jwb"
                 android:layout_width="150dp"
@@ -160,17 +114,8 @@
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
-            <View
-                android:layout_width="0.3dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray" />
-
         </TableRow>
-    </TableLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.3dp"
-        android:background="@android:color/darker_gray" />
+    </TableLayout>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

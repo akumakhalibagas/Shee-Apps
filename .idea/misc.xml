@@ -3,11 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/drawable-v24/bg_table.xml" value="0.2275" />
+        <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/drawable-v24/bg_table_green.xml" value="0.2275" />
         <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/drawable/bg_dropdown.xml" value="0.177" />
         <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/drawable/bg_shape.xml" value="0.1865" />
-        <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/layout-land/layout_pdf_green.xml" value="0.28164347249834326" />
-        <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/layout-land/layout_pdf_ibpr.xml" value="0.18" />
-        <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/layout-land/layout_pdf_jsa.xml" value="0.18" />
+        <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/drawable/bg_table.xml" value="0.2275" />
+        <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/layout-land/layout_pdf_green.xml" value="0.2534043812907046" />
+        <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/layout-land/layout_pdf_ibpr.xml" value="0.12581409117821196" />
+        <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/layout-land/layout_pdf_jsa.xml" value="0.2" />
         <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/layout-notlong-land/layout_pdf_green_land.xml" value="0.2526041666666667" />
         <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/layout-small-land/layout_pdf_green_land.xml" value="0.20726495726495728" />
         <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/layout/activity_admin.xml" value="0.25" />
@@ -24,13 +27,13 @@
         <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/layout/activity_show_jsa.xml" value="0.2" />
         <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/layout/activity_splash.xml" value="0.22" />
         <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/layout/item_dropdown.xml" value="0.22" />
-        <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/layout/item_green.xml" value="0.9" />
-        <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/layout/item_ibpr.xml" value="0.2" />
+        <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/layout/item_green.xml" value="0.2630579297245964" />
+        <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/layout/item_ibpr.xml" value="0.25" />
         <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/layout/item_jsa.xml" value="0.33" />
         <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/layout/layout.xml" value="0.25" />
         <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/layout/layout_filter.xml" value="0.25" />
-        <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/layout/layout_pdf_green.xml" value="0.18" />
-        <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/layout/layout_pdf_ibpr.xml" value="0.22" />
+        <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/layout/layout_pdf_green.xml" value="0.5" />
+        <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/layout/layout_pdf_ibpr.xml" value="0.5" />
         <entry key="..\:/makhalibagas/coding/myapplication/app/src/main/res/layout/layout_pdf_jsa.xml" value="0.1811965811965812" />
       </map>
     </option>
