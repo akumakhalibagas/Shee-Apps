@@ -45,7 +45,6 @@ class ItemJsaAdapter(val isHead: Boolean) : RecyclerView.Adapter<ItemJsaAdapter.
                 tvPekerja.text = data.pekerja
                 tvPerusahaan.text = data.perusahaan
                 tvDepartemen.text = data.department
-                tvBahaya.text = data.bahaya
                 tvTahapPekerjaan.text = data.pekerjaan
                 tvPotensi.text = data.bahaya
                 tvUpaya.text = data.pengendalian
