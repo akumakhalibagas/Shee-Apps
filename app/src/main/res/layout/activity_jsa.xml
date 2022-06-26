@@ -69,7 +69,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Perusahaan" />
+                android:text="Nama Perusahaan" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_perusahaan"
@@ -86,7 +86,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Pekerja" />
+                android:text="Nama Pekerja" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_pekerja"
@@ -102,46 +102,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Pekerjaan" />
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/et_pekerjaan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/bg_shape"
-                android:imeOptions="actionNext"
-                android:inputType="text|textMultiLine"
-                android:lines="3"
-                android:paddingStart="6dp"
-                tools:ignore="RtlSymmetry" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Supervisor" />
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/et_supervisor"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/bg_shape"
-                android:imeOptions="actionNext"
-                android:inputType="text|textMultiLine"
-                android:lines="3"
-                android:paddingStart="6dp"
-                tools:ignore="RtlSymmetry" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="SHE Departement" />
+                android:text="Departement" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_she"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_shape"
+                android:imeOptions="actionNext"
+                android:inputType="text|textMultiLine"
+                android:lines="3"
+                android:paddingStart="6dp"
+                tools:ignore="RtlSymmetry" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Tahap Pekerjaan" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_pekerjaan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -197,6 +179,24 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/bg_shape"
                 android:imeOptions="actionNext"
+                android:paddingStart="6dp"
+                tools:ignore="RtlSymmetry" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Supervisor" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_supervisor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_shape"
+                android:imeOptions="actionNext"
+                android:inputType="text|textMultiLine"
+                android:lines="3"
                 android:paddingStart="6dp"
                 tools:ignore="RtlSymmetry" />
 

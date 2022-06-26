@@ -50,9 +50,30 @@
                 android:textSize="12sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="75dp"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
+                android:layout_weight="1"
+                android:gravity="start"
+                android:text="Tanggal"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="6dp"
+                android:layout_weight="1"
+                android:gravity="start"
+                android:text="Jam"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_pekerja"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
                 android:layout_weight="1"
                 android:gravity="start"
                 android:text="Nama Pekerja"
@@ -60,9 +81,21 @@
                 android:textSize="12sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_perusahaan"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:layout_weight="1"
+                android:gravity="start"
+                android:text="Nama Perusahaan"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_departemen"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="6dp"
+                android:layout_margin="6dp"
                 android:layout_weight="1"
                 android:gravity="start"
                 android:text="Departemen"
@@ -77,17 +110,6 @@
                 android:layout_weight="1"
                 android:gravity="start"
                 android:text="Bahaya"
-                android:textColor="@color/black"
-                android:textSize="12sp" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_supervisor"
-                android:layout_width="85dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="6dp"
-                android:layout_weight="1"
-                android:gravity="start"
-                android:text="Supervisor"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
@@ -131,7 +153,19 @@
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_supervisor"
+                android:layout_width="85dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="6dp"
+                android:layout_weight="1"
+                android:gravity="start"
+                android:text="Supervisor"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
         </TableRow>
+
     </TableLayout>
 
     <androidx.recyclerview.widget.RecyclerView

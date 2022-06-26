@@ -97,7 +97,7 @@ class MainRemoteDataSource @Inject constructor(val apiService: AppApiService) {
     fun delIbpr(id: String): Flow<AppApiResponse<SheeResponse>> =
         flow {
             try {
-                val response = apiService.delJsa(id)
+                val response = apiService.delIbpr(id)
                 if (response.status.equals("success")) {
                     emit(AppApiResponse.Success(response))
                 } else {

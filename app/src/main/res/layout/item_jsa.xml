@@ -27,13 +27,44 @@
                 android:textSize="12sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_date"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="6dp"
+                android:gravity="start"
+                android:text="1 May 2022"
+                android:textSize="12sp"
+                android:textColor="@color/black"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_jam"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="6dp"
+                android:gravity="start"
+                android:text="18.00"
+                android:textSize="12sp"
+                android:textColor="@color/black"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_pekerja"
-                android:layout_width="75dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="6dp"
                 android:layout_weight="1"
                 android:gravity="start"
                 android:text="Nama Pekerja"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_perusahaan"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:layout_weight="1"
+                android:gravity="start"
+                android:text="Nama Perusahaan"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
@@ -60,18 +91,7 @@
                 android:textSize="12sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_supervisor"
-                android:layout_width="85dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="6dp"
-                android:layout_weight="1"
-                android:gravity="start"
-                android:text="Bagas Makhali"
-                android:textColor="@color/black"
-                android:textSize="12sp" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_perusahaan"
+                android:id="@+id/tv_tahap_pekerjaan"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="6dp"
@@ -111,6 +131,17 @@
                 android:layout_weight="1"
                 android:gravity="start"
                 android:text="Tanggung Jawab"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_supervisor"
+                android:layout_width="85dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:layout_weight="1"
+                android:gravity="start"
+                android:text="Bagas Makhali"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 

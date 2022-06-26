@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.she.apps.data.source.remote.response.JsaItem
 import com.she.apps.databinding.ItemJsaBinding
+import com.she.apps.utils.changeDateFormat
 
 class ItemJsaAdapter(val isHead: Boolean) : RecyclerView.Adapter<ItemJsaAdapter.ViewHolder>() {
 
@@ -39,13 +40,16 @@ class ItemJsaAdapter(val isHead: Boolean) : RecyclerView.Adapter<ItemJsaAdapter.
         fun bind(data: JsaItem) {
             binding.apply {
                 tvNo.text = "${layoutPosition+1}"
+                tvDate.text = changeDateFormat(data.tanggal.toString(), "dd MMMM yyyy")
+                tvJam.text = changeDateFormat(data.tanggal.toString(), "HH:mm")
                 tvPekerja.text = data.pekerja
-                tvDepartemen.text = data.department
                 tvPerusahaan.text = data.perusahaan
+                tvDepartemen.text = data.department
+                tvBahaya.text = data.bahaya
+                tvTahapPekerjaan.text = data.pekerjaan
                 tvPotensi.text = data.bahaya
                 tvUpaya.text = data.pengendalian
                 tvTanggungJwb.text = data.tanggungJawab
-                tvBahaya.text = data.bahaya
                 tvSupervisor.text = data.supervisor
                 root.setOnClickListener {
                     if (!isHead){

@@ -160,6 +160,16 @@
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="6dp"
+                android:layout_weight="1"
+                android:gravity="start"
+                android:text="Pelapor"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
         </TableRow>
 
     </TableLayout>
