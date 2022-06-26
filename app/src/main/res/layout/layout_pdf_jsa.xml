@@ -24,21 +24,36 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/bss"
-        app:layout_constraintStart_toEndOf="@id/bss"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/bss" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bss" />
 
     <TableLayout
         android:id="@+id/tl"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginTop="10dp"
         android:background="#FFFFFF"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bss">
+        app:layout_constraintTop_toBottomOf="@id/view">
 
         <TableRow android:gravity="center">
+
+            <View
+                android:layout_width="0.3dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="30dp"
@@ -49,90 +64,145 @@
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
+            <View
+                android:layout_width="0.3dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
+
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="match_parent"
+                android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="start"
                 android:text="Nama Pekerja"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
+            <View
+                android:layout_width="0.3dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
+
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="match_parent"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="start"
                 android:text="Departemen"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
+            <View
+                android:layout_width="0.3dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_bahaya"
-                android:layout_width="match_parent"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="start"
                 android:text="Bahaya"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
+            <View
+                android:layout_width="0.3dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_supervisor"
-                android:layout_width="match_parent"
+                android:layout_width="85dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="start"
                 android:text="Supervisor"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
+            <View
+                android:layout_width="0.3dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
+
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="match_parent"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="start"
                 android:text="Tahap Pekerjaan"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
+            <View
+                android:layout_width="0.3dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
+
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="match_parent"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="start"
                 android:text="Potensi Bahaya"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
+            <View
+                android:layout_width="0.3dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
+
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="match_parent"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="start"
                 android:text="Upaya Pengendalian"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
+            <View
+                android:layout_width="0.3dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
+
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="match_parent"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="start"
                 android:text="Tanggung Jawab"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
+            <View
+                android:layout_width="0.3dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
+
         </TableRow>
     </TableLayout>
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tl" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_jsa"
@@ -144,6 +214,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tl"
         tools:listitem="@layout/item_jsa" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rv_jsa" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

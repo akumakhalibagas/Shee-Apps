@@ -17,103 +17,153 @@
 
         <TableRow android:gravity="center">
 
+            <View
+                android:layout_width="0.3dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_no"
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="6dp"
+                android:layout_margin="6dp"
                 android:gravity="center"
                 android:text="1"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
+            <View
+                android:layout_width="0.3dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_pekerja"
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="6dp"
+                android:layout_margin="6dp"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="start"
                 android:text="Nama Pekerja"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
+
+            <View
+                android:layout_width="0.3dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_departemen"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="6dp"
+                android:layout_margin="6dp"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="start"
                 android:text="Departemen"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
+
+            <View
+                android:layout_width="0.3dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_bahaya"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="6dp"
+                android:layout_margin="6dp"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="start"
                 android:text="Bahaya Banget"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
+
+            <View
+                android:layout_width="0.3dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_supervisor"
                 android:layout_width="85dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="6dp"
+                android:layout_margin="6dp"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="start"
                 android:text="Bagas Makhali"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
+
+            <View
+                android:layout_width="0.3dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_perusahaan"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="6dp"
+                android:layout_margin="6dp"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="start"
                 android:text="Tahap Pekerjaan"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
+
+            <View
+                android:layout_width="0.3dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_potensi"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="6dp"
+                android:layout_margin="6dp"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="start"
                 android:text="Potensi Bahaya"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
+
+            <View
+                android:layout_width="0.3dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_upaya"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="6dp"
+                android:layout_margin="6dp"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="start"
                 android:text="Upaya Pengendalian"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
+
+            <View
+                android:layout_width="0.3dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_tanggung_jwb"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="6dp"
+                android:layout_margin="6dp"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="start"
                 android:text="Tanggung Jawab"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
+
+            <View
+                android:layout_width="0.3dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
 
         </TableRow>
     </TableLayout>

@@ -24,21 +24,36 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/bss"
-        app:layout_constraintStart_toEndOf="@id/bss"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/bss" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bss" />
 
     <TableLayout
         android:id="@+id/tl"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginTop="10dp"
         android:background="#4CAF50"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bss">
+        app:layout_constraintTop_toBottomOf="@id/view">
 
         <TableRow android:gravity="center">
+
+            <View
+                android:layout_width="0.3dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="30dp"
@@ -49,109 +64,180 @@
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="6dp"
-                android:gravity="center"
-                android:text="Date"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+            <View
+                android:layout_width="0.3dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
-                android:gravity="center"
+                android:gravity="start"
+                android:text="Date"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="0.3dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="6dp"
+                android:gravity="start"
                 android:text="Jam"
                 android:textSize="12sp"
                 android:textStyle="bold" />
+
+            <View
+                android:layout_width="0.3dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
-                android:gravity="center"
+                android:gravity="start"
                 android:text="Lokasi"
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
+            <View
+                android:layout_width="0.3dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
-                android:gravity="center"
+                android:gravity="start"
                 android:text="Status"
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
+            <View
+                android:layout_width="0.3dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
-                android:gravity="center"
+                android:gravity="start"
                 android:text="Kategory"
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="6dp"
-                android:gravity="center"
-                android:text="Shift"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+            <View
+                android:layout_width="0.3dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
-                android:gravity="center"
+                android:gravity="start"
+                android:text="Shift"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="0.3dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="6dp"
+                android:gravity="start"
                 android:text="Site"
                 android:textSize="12sp"
                 android:textStyle="bold" />
+
+            <View
+                android:layout_width="0.3dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
-                android:gravity="center"
+                android:gravity="start"
                 android:text="Departement"
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
+            <View
+                android:layout_width="0.3dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="start"
                 android:text="Kondisi Tindakan\nTidak Aman"
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="6dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Saran Perbaikan"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+            <View
+                android:layout_width="0.3dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="start"
+                android:text="Saran Perbaikan"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="0.3dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="6dp"
+                android:layout_weight="1"
+                android:gravity="start"
                 android:text="Telah dibicarakan\ndengan"
                 android:textSize="12sp"
                 android:textStyle="bold" />
+
+            <View
+                android:layout_width="0.3dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
+
         </TableRow>
     </TableLayout>
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tl" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_green"
@@ -164,16 +250,14 @@
         app:layout_constraintTop_toBottomOf="@id/tl"
         tools:listitem="@layout/item_green" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_dibuat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="75dp"
-        android:text="Dibuat Oleh"
-        android:textColor="@color/black"
-        android:textSize="12sp"
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/rv_green" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
