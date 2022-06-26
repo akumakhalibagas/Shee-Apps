@@ -21,12 +21,24 @@
                 android:layout_height="50dp"
                 android:layout_marginEnd="6dp"
                 android:background="@drawable/bg_dropdown"
+                android:enabled="false"
                 android:inputType="none"
                 android:padding="5dp"
-                android:enabled="false"
                 android:text="All"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="13sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/bt_all"
+                android:layout_width="115dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="6dp"
+                android:background="@drawable/bg_shape"
+                android:enabled="false"
+                android:text="Show All"
+                android:textAllCaps="false" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/bt_pdf"
@@ -53,9 +65,16 @@
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <include
-            android:id="@+id/included"
-            layout="@layout/layout_pdf_jsa" />
+        <HorizontalScrollView
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include
+                android:id="@+id/included"
+                layout="@layout/layout_pdf_jsa" />
+
+        </HorizontalScrollView>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 

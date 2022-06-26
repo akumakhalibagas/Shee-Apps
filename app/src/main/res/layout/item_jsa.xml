@@ -29,7 +29,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_pekerja"
-                android:layout_width="match_parent"
+                android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="1"
@@ -40,7 +40,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_departemen"
-                android:layout_width="match_parent"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="1"
@@ -51,7 +51,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_bahaya"
-                android:layout_width="match_parent"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="1"
@@ -62,7 +62,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_supervisor"
-                android:layout_width="match_parent"
+                android:layout_width="85dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="1"
@@ -73,18 +73,18 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_perusahaan"
-                android:layout_width="match_parent"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Perusahaan"
+                android:text="Tahap Pekerjaan"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_potensi"
-                android:layout_width="match_parent"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="1"
@@ -95,7 +95,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_upaya"
-                android:layout_width="match_parent"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="1"
@@ -106,7 +106,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_tanggung_jwb"
-                android:layout_width="match_parent"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="1"

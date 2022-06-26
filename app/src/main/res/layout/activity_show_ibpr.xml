@@ -29,6 +29,18 @@
                 android:textSize="13sp" />
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/bt_all"
+                android:layout_width="115dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="6dp"
+                android:background="@drawable/bg_shape"
+                android:enabled="false"
+                android:text="Show All"
+                android:textAllCaps="false" />
+
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/bt_pdf"
                 android:layout_width="115dp"
                 android:layout_height="wrap_content"
@@ -54,8 +66,9 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <HorizontalScrollView
+            android:id="@+id/scroll"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <include
                 android:id="@+id/included"
