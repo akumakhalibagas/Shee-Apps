@@ -54,7 +54,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_resiko"
-                android:layout_width="50dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:gravity="start"
@@ -63,7 +63,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_kode_bahaya"
-                android:layout_width="100dp"
+                android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:gravity="start"
