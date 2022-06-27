@@ -44,7 +44,6 @@ class NetworkModule {
             .readTimeout(1, TimeUnit.MINUTES)
             .connectTimeout(1, TimeUnit.MINUTES)
             .addInterceptor(httpLoggingInterceptor)
-            .addInterceptor(chuckInterceptor)
             .addInterceptor(getInterceptor())
             .build()
     }

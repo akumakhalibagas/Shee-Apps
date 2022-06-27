@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="1"
-                android:gravity="start"
+                android:gravity="center"
                 android:text="Tanggal"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="1"
-                android:gravity="start"
+                android:gravity="center"
                 android:text="Jam"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
@@ -75,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="6dp"
                 android:layout_weight="1"
-                android:gravity="start"
+                android:gravity="center"
                 android:text="Nama Pekerja"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
@@ -86,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="6dp"
                 android:layout_weight="1"
-                android:gravity="start"
+                android:gravity="center"
                 android:text="Nama Perusahaan"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
@@ -97,7 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="6dp"
                 android:layout_weight="1"
-                android:gravity="start"
+                android:gravity="center"
                 android:text="Departemen"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
@@ -107,7 +107,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="1"
-                android:gravity="start"
+                android:gravity="center"
                 android:text="Tahap Pekerjaan"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
@@ -117,7 +117,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="1"
-                android:gravity="start"
+                android:gravity="center"
                 android:text="Potensi Bahaya"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
@@ -127,7 +127,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="1"
-                android:gravity="start"
+                android:gravity="center"
                 android:text="Upaya Pengendalian"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
@@ -137,7 +137,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="1"
-                android:gravity="start"
+                android:gravity="center"
                 android:text="Tanggung Jawab"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
@@ -148,7 +148,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="1"
-                android:gravity="start"
+                android:gravity="center"
                 android:text="Supervisor"
                 android:textColor="@color/black"
                 android:textSize="12sp" />

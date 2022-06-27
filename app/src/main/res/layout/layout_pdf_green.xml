@@ -53,7 +53,7 @@
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
-                android:gravity="start"
+                android:gravity="center"
                 android:text="Date"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -62,7 +62,7 @@
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
-                android:gravity="start"
+                android:gravity="center"
                 android:text="Jam"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -71,7 +71,7 @@
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
-                android:gravity="start"
+                android:gravity="center"
                 android:text="Lokasi"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -80,7 +80,7 @@
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
-                android:gravity="start"
+                android:gravity="center"
                 android:text="Status"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -89,7 +89,7 @@
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
-                android:gravity="start"
+                android:gravity="center"
                 android:text="Kategory"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -98,7 +98,7 @@
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
-                android:gravity="start"
+                android:gravity="center"
                 android:text="Shift"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -107,7 +107,7 @@
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
-                android:gravity="start"
+                android:gravity="center"
                 android:text="Site"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -116,7 +116,7 @@
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
-                android:gravity="start"
+                android:gravity="center"
                 android:text="Departement"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -126,7 +126,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="1"
-                android:gravity="start"
+                android:gravity="center"
                 android:text="Kondisi Tindakan\nTidak Aman"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -136,7 +136,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="1"
-                android:gravity="start"
+                android:gravity="center"
                 android:text="Saran Perbaikan"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -146,7 +146,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="1"
-                android:gravity="start"
+                android:gravity="center"
                 android:text="Telah dibicarakan\ndengan"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -156,7 +156,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
                 android:layout_weight="1"
-                android:gravity="start"
+                android:gravity="center"
                 android:text="Pelapor"
                 android:textSize="12sp"
                 android:textStyle="bold" />
