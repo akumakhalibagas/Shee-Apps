@@ -52,6 +52,7 @@ class ItemIbprAdapter(val isHead: Boolean) : RecyclerView.Adapter<ItemIbprAdapte
                 tvSite.text = data.site
                 tvDp.text = data.department
                 tvPelapor.text = data.pelapor
+                tvLokasi.text = data.lokasi
                 root.setOnClickListener {
                     if (!isHead){
                         onItemClick!!.invoke(data)
