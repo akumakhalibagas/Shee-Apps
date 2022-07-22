@@ -4,10 +4,12 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import com.she.apps.R
 import com.she.apps.data.source.remote.request.EditJsaReq
 import com.she.apps.data.source.remote.request.JsaReq
 import com.she.apps.data.source.remote.response.JsaItem
@@ -100,6 +102,34 @@ class JsaActivity : AppCompatActivity() {
                 }
                 setOnClickListener {
                     showTimePickerDialog()
+                }
+            }
+
+            etPerusahaan.apply {
+                setAdapter(
+                    ArrayAdapter(
+                        this@JsaActivity,
+                        R.layout.item_dropdown,
+                        Datas.namaPt
+                    )
+                )
+                setOnTouchListener { _, _ ->
+                    showDropDown()
+                    return@setOnTouchListener false
+                }
+            }
+
+            etShe.apply {
+                setAdapter(
+                    ArrayAdapter(
+                        this@JsaActivity,
+                        R.layout.item_dropdown,
+                        Datas.departemen
+                    )
+                )
+                setOnTouchListener { _, _ ->
+                    showDropDown()
+                    return@setOnTouchListener false
                 }
             }
 

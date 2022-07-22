@@ -7,5 +7,6 @@ object Datas {
     val category = listOf("KTA", "TTA")
     val departemen = listOf("SHE", "Produksi", "SCM", "Engineering", "Plant", "HCGC")
     val type = listOf("Head", "Officer/Admin")
-    val filter = listOf("Pagi", "Malam", "Open", "Close", "Continue")
+    val kodeBahaya = listOf("AA", "A", "B", "C")
+    val namaPt = listOf("PT BSS")
 }

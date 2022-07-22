@@ -205,17 +205,15 @@
                 android:layout_marginTop="16dp"
                 android:text="Kode Bahaya" />
 
-            <androidx.appcompat.widget.AppCompatEditText
+            <AutoCompleteTextView
                 android:id="@+id/et_kode_bahaya"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="45dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/bg_shape"
-                android:imeOptions="actionNext"
-                android:inputType="text|textMultiLine"
-                android:lines="3"
-                android:paddingStart="6dp"
-                tools:ignore="RtlSymmetry" />
+                android:background="@drawable/bg_dropdown"
+                android:inputType="none"
+                android:padding="5dp"
+                android:textColor="@color/black" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"

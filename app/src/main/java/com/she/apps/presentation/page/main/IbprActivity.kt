@@ -148,6 +148,20 @@ class IbprActivity : AppCompatActivity() {
                 }
             }
 
+            etKodeBahaya.apply {
+                setAdapter(
+                    ArrayAdapter(
+                        this@IbprActivity,
+                        R.layout.item_dropdown,
+                        Datas.kodeBahaya
+                    )
+                )
+                setOnTouchListener { _, _ ->
+                    showDropDown()
+                    return@setOnTouchListener false
+                }
+            }
+
             btnHapus.setOnClickListener {
                 val ibpr = intent.getParcelableExtra<IbprItem>("ibpr")
                 viewModel.delIbpr(ibpr!!.id.toString())
