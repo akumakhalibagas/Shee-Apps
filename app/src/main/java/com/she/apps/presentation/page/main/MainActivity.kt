@@ -36,6 +36,13 @@ class MainActivity : AppCompatActivity() {
                 mGc.visibility = View.GONE
                 mIbpr.visibility = View.GONE
             }
+        }else if(users.tipeUser.equals("3")){
+            binding.lHead.visibility = View.GONE
+            binding.lAdmin.visibility = View.VISIBLE
+            binding.apply {
+                mGc.visibility = View.GONE
+                mIbpr.visibility = View.GONE
+            }
         }
     }
 

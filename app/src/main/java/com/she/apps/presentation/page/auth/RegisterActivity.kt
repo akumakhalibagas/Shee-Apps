@@ -54,6 +54,7 @@ class RegisterActivity : AppCompatActivity() {
                     val type = when {
                         etType.text.toString()=="Head" -> "1"
                         etType.text.toString()=="Officer/Admin" -> "2"
+                        etType.text.toString()=="Pelaksana" -> "3"
                         else -> "0"
                     }
                     viewModel.register(
